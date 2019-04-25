@@ -11,7 +11,7 @@ Use this for linking bootstrap
 ## jQuery
 Use this for jQuery
 ```
-<script src="https://code.jquery.com/jquery-3.4.0.min.js">
+<script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
 ```
 
 ## Page Names
