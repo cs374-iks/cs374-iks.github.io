@@ -13,6 +13,14 @@
 </head>
 
 <body>
+<style type = 'text/css'>
+    .jumbotron {
+        background-image : url('static/images/quest_background.png');
+        background-size: cover;
+        text-shadow: black 0.2em 0.2em 0.2em;
+        color: white;
+    }
+</style>
 <div class="wrapper">
     <nav class="navbar navbar-expand-md navbar-dark bg-secondary">
         <button class="navbar-toggler" type="button" id="sidebarCollapse" data-toggle="collapse" data-target="" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,9 +74,7 @@
             </li>
         </ul>
     </nav>
-    <div id="content">
-        <h1>Hello world!</h1>
-    </div>
+
     <div class="overlay"></div>
     <div>
         <!-- Bootstrap core JavaScript
@@ -101,6 +107,84 @@
                 });
             });
         </script>
+    </div>
+</div>
 
+
+<div class = "container-fluid">
+    <table class = "table">
+        <thead>
+            <tr>
+                <th>Experts</th>
+                <th>Quest contents</th>
+                <th>Road View</th>
+                <th>Extra Functions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td> <img src="./static/images/people1.jpg" width = 100em alt="donald trump"></td>
+                <td>Visit Statue of Liberty, and take photo</td>
+                <td><img src="./static/images/table1.jpg" width = 100em alt="donald trump"></td>
+                <td>
+
+                    <a data-target = "#modal_map" data-toggle = "modal" role = 'button' >
+                        <img src="./static/images/quest_map.png" width = 100em alt="map icon">
+                    </a>
+
+                    <a class = "btn btn-success" data-target = "#modal_finish_quest" data-toggle = "modal" role = 'button' >I finish my quest!</a>
+                    <button class="btn btn-danger">Quit quest </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class = "row">
+    <div class = "modal" id = "modal_finish_quest" tabindex = "-1">
+        <div class = "modal-dialog">
+            <div class="modal-content">
+                <div class = "modal-header">
+                    upload your photo!
+                    <button class = "close" data-dismiss = "modal">&times;</button>
+                </div>
+                <div class = "modal-body" style = "text-align : center">
+                    <form id="form1" action="" method="post" enctype="multipart/form-data" target="repacatFrame">
+                        <input type="file" name="file">
+                        <input type="submit">
+                    </form>
+                    <form action="">
+                        <textarea name="upload_quest_story" id="" cols="30" rows="10" placeholder="write your story!"></textarea>
+                        <input type="submit">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class = "row">
+    <div class = "modal" id = "modal_map" tabindex = "-1">
+        <div class = "modal-dialog">
+            <div class="modal-content">
+                <div class = "modal-header">
+                    Find your quest place!
+                    <button class = "close" data-dismiss = "modal">&times;</button>
+                </div>
+                <div class = "modal-body" style = "text-align : center">
+                    <iframe id = "map"
+                            width="400"
+                            height="400"
+                            frameborder="0" style="border:0"
+
+                            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBO_WwFts0d4UEd2BBjxoBTTqLHvi0FyqA&q=Space+Needle,Seattle+WA&maptype=roadmap&language=en" allowfullscreen
+                    >
+                    </iframe>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
