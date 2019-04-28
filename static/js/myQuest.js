@@ -27,7 +27,7 @@ let current_quest = [
 
 let profile= [
     {
-        quest_provider_picture: "./static/images/people3.jpg",
+        quest_provider_picture: "./static/images/people1.jpg",
         quest_provider_name : "Ronald Rump",
         quest_provider_introduction : "Hello, my name is Ronald Rump. I love trucks and wall. BING BING BONG!"
 
@@ -150,7 +150,8 @@ function clickProfile(){ //function when click profile image
         let col2 = row.insertCell(1);
         let col3 = row.insertCell(2);
         let col4 = row.insertCell(3);
-        col1.innerHTML = `<img src=${profile[i].place_img} width = 100em alt="donald trump">`;
+        let alreadyAdded = false;
+        col1.innerHTML = `<img src=${profile[0].quest_provider_picture} width = 100em alt="donald trump">`;
 
         col2.innerHTML = `${profile[i].quest_content}`;
 
@@ -158,18 +159,36 @@ function clickProfile(){ //function when click profile image
 
         //col4.innerHTML = `<a data-target = "#modal_map" data-toggle = "modal" role = 'button' onclick=`+"updateGoogleMap(${profile[i].place_name});>press here </a>"
 
+        for (let j = 0; j < current_quest.length ; j ++){
+            if (profile[i].id == current_quest[j].id){
+                alreadyAdded = true;
+            }
+        }
+        if (alreadyAdded){
+            col4.innerHTML = `<button id="button_${profile[i].id}" onclick = addThisQuest('${profile[i].id}') disabled = true>Add Quest</button>`
+        }
+        else{
+            col4.innerHTML = `<button id="button_${profile[i].id}" onclick = addThisQuest('${profile[i].id}')>Add Quest</button>`
+        }
 
 
-        col4.innerHTML = `<button >Add Quest</button>`
 
     }
 
 
 }
 
-function addThisQuest(quest){
-    JSON.parse(quest);
-    current_quest.push(quest);
+function addThisQuest(id){
+    for (let i = 1; i < profile.length; i++){
+        if (profile[i].id ==id){
+            current_quest.push(profile[i])
+            let disable_button = document.getElementById(`button_${profile[i].id}`);
+            disable_button.disabled = true;
+
+        }
+
+    }
+
     initializeTable();
     addAllContentsToTable();
 
