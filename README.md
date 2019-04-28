@@ -19,5 +19,7 @@ Use this for jQuery
 | Filename     | Page      |
 | ------------ | --------- |
 | index.html   | Main Page |
+| myQuest.html   | Quest Page |
+
 
 
