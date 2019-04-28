@@ -151,12 +151,13 @@
                 <div class = "modal-body" style = "text-align : center">
                     <form id="form1" action="" method="post" enctype="multipart/form-data" target="repacatFrame">
                         <input type="file" name="file">
-                        <input type="submit">
+                        <!--<input type="submit">-->
                     </form>
                     <form action="">
                         <textarea name="upload_quest_story" id="" cols="30" rows="10" placeholder="write your story!"></textarea>
-                        <input type="submit">
+                        <!--<input type="submit">-->
                     </form>
+                    <button id = "submit_quest_button" data-dismiss = "modal">Yay! I want upload it!</button>
                 </div>
             </div>
         </div>
@@ -180,6 +181,45 @@
                             src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBO_WwFts0d4UEd2BBjxoBTTqLHvi0FyqA&q=Space+Needle,Seattle+WA&maptype=roadmap&language=en"
                     >
                     </iframe>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class = "row">
+    <div class = "modal" id = "modal_quit_quest" tabindex = "-1">
+        <div class = "modal-dialog">
+            <div class="modal-content">
+                <div class = "modal-header">
+                    Are you sure to quit quest?
+                    <button class = "close" data-dismiss = "modal">&times;</button>
+                </div>
+                <div class = "modal-body" style = "text-align : center">
+                    <button id = 'remove_quest_button' data-dismiss = "modal" onclick = "removeById('-1')">Yes, I want to quit my quest</button>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class = "row">
+    <div class = "modal" id = "modal_profile" tabindex = "-1">
+        <div class = "modal-dialog">
+            <div class="modal-content">
+                <div class = "modal-header">
+                    Profile page
+                    <button class = "close" data-dismiss = "modal">&times;</button>
+                </div>
+                <div class = "modal-body" style = "text-align : center">
+                    <table id = 'quest_on_profile'>
+
+                    </table>
+
+
 
                 </div>
             </div>
