@@ -9,13 +9,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
     <link href="https://fonts.googleapis.com/css?family=Baloo+Bhaina|Indie+Flower|Libre+Franklin|Major+Mono+Display|Ubuntu" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Chewy" rel="stylesheet">
 
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
   </head>
 
   <body>
-  <div class = "content">
       <div class="wrapper">
         <nav class="navbar navbar-expand-md navbar-dark bg-secondary">
           <button class="navbar-toggler" type="button" id="sidebarCollapse" data-toggle="collapse" data-target="" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,6 +46,7 @@
             </ul>
           </div>
         </nav>
+      </div>
         <nav id="sidebar">
           <div id="dismiss">
             <i class="fas fa-arrow-left" style="margin-top: 10px;"></i>
@@ -69,83 +71,65 @@
             </li>
           </ul>
         </nav>
-        <div id="content">
-          <h1 style = "font-family: 'Ubuntu', sans-serif; margin: 10px 10px 10px 10px">MY TRAVEL SUMMARY</h1>
+        <div class="content">
+        <div class="p-3 mb-2 bg-danger text-white">
+        <h1 style = "font-family: 'Luckiest Guy', cursive; margin: 10px 10px 10px 10px; text-align: center">CONGRATULATIONS</h1>
+        <p id = "user_profile_image" style = "text-align: center;"></p>
+        <p id = "username" style = "text-align: center; font-size: 30px; color: white;font-family: 'Ubuntu', sans-serif;"></p>
+        <p style = "text-align: center">
+            <span class="fa fa-star checked" style = "font-size: 90px"></span>
+            <span class="fa fa-star checked" style = "font-size: 90px"></span>
+            <span class="fa fa-star checked" style = "font-size: 90px"></span>
+            <span class="fa fa-star" style = "font-size: 90px"></span>
+            <span class="fa fa-star" style = "font-size: 90px"></span>
+          </p>
+        <p style = "text-align: center; font-size: 72px; color: white; font-family: 'Chewy', cursive;">You have just finished your trip!</p>
         </div>
-        <hr style = "margin: 10px 10px 10px 10px; border-style: inset; border-width: 2px; background-color: rgb(202, 202, 202)">
-        <b style = "margin: 10px 10px 10px 10px; font-size: 20px">STATUS</b>
-        <div class = "container-fluid" style = "font-family: 'Major Mono Display', monospace; text-align: center; font-size: 24px; margin: 10px 10px 10px 10px">
+        <div class = "container-fluid p-3 mb-2 bg-light text-black" style = "text-align: center;">
+            <b style = "font-size: 20px">STATUS</b>
           <div class = "row">
               <div class = "col-sm">
-                  countries<br> visited
+                  <p style = "font-family: 'Major Mono Display', monospace; font-size: 24px;color: black">countries<br>visited</p>
+                  <p style = "font-family: 'Baloo Bhaina', cursive; font-size: 108px; color: black" id = "countries_visited"></p>
               </div>
               <div class = "col-sm">
-                quests<br> completed
+                <p style = "font-family: 'Major Mono Display', monospace; font-size: 24px;color: black">quests<br>completed</p>
+                <p style = "font-family: 'Baloo Bhaina', cursive; font-size: 108px;color: black" id = "quests_completed"></p>
             </div>
             <div class = "col-sm">
-                total<br> points
+                <p style = "font-family: 'Major Mono Display', monospace; font-size: 24px;color: black">total<br>points</p>
+                <p style = "font-family: 'Baloo Bhaina', cursive; font-size: 108px; color: black" id = "total_points"></p>
             </div>
             </div>
       </div>
-      <div class = "container-fluid" style = "font-family: 'Baloo Bhaina', cursive; text-align: center; font-size: 96px; margin: 10px 10px 10px 10px">
-        <div class = "row">
-            <div class = "col-sm">
-                1
-            </div>
-            <div class = "col-sm">
-              6
-          </div>
-          <div class = "col-sm">
-              180
-          </div>
+      <div class = "container-fluid p-3 mb-2 bg-dark text-white" style = "font-family: 'Baloo Bhaina', cursive; text-align: center;" id = "photo_section">
+          <b style = "margin: 10px 10px 10px 10px; font-size: 20px">PHOTOS</b>
+          <table align = center id = "imageTable" width = 100%>
+              <tr>
+                <td style = "text-align: center" id = "image1"></td>
+                <td style = "text-align: center" id = "image2"></td>
+                <td style = "text-align: center" id = "image3"></td>
+              </tr>
+            </table>
           </div>
       </div>
-      <b style = "margin: 10px 10px 10px 10px; font-size: 20px">PHOTOS</b>
-      <div class = "container-fluid" style = "font-family: 'Baloo Bhaina', cursive; text-align: center;">
-        <div class = "row">
-            <div class = "col-sm">
-                <a href = "#"><img src = "static/img/img1.jpg" style = "width: 350px; height: 350px; font-size: 96px; margin: 10px 10px 10px 10px;"></a>
-            </div>
-            <div class = "col-sm">
-              <a href = "#"><img src = "static/img/img2.jpg" style = "width: 350px; height: 350px; font-size: 96px; margin: 10px 10px 10px 10px;"></a>
-          </div>
-          <div class = "col-sm">
-            <a href = "#"><img src = "static/img/img3.jpg" style = "width: 350px; height: 350px; font-size: 96px; margin: 10px 10px 10px 10px;"></a>
-          </div>
-          </div>
-      </div>
-      </div>
-      <hr style = "margin: 10px 10px 10px 10px; border-style: inset; border-width: 2px; background-color: rgb(202, 202, 202)">
-      <div class = "container-fluid" style = "margin: 10px 10px 10px 10px; text-align: center">
-        <div class = "row">
-          <div class = "col-sm">
-            <p style = "font-size: 24; color: black; font-family: 'Indie Flower', cursive;">How was your trip?</p>
-            <p>
-              <span class="fa fa-star checked" style = "font-size: 30px"></span>
-              <span class="fa fa-star checked" style = "font-size: 30px"></span>
-              <span class="fa fa-star checked" style = "font-size: 30px"></span>
-              <span class="fa fa-star" style = "font-size: 30px"></span>
-              <span class="fa fa-star" style = "font-size: 30px"></span>
-            </p>
-            <textarea cols = 100 rows = 12 style = "margin: 10px 10px 25px 10px;"></textarea>
-          </div>
-        </div>
+    </div>
       </div>
     </div>
     <div class = "overlay"></div>
-    <hr style = "margin: 10px 10px 10px 10px; border-style: inset; border-width: 2px; background-color: rgb(202, 202, 202)">
-    <button class = "btn btn-success" style = "margin: 10px 10px 10px 10px; float: right; width: 100px; height: 50px">Close</button>
+    <a href = "mypage.html"><button class = "btn btn-success btn-block" style = "margin: 10px 10px 10px 10px; float: right; width: 100px; height: 50px">Close</button></a>
     <div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
    <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
-   <script src = "static/js/sidebar.js"></script>
+   <script src = "static/js/travel_summary.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
     <script type="text/javascript">
     $(document).ready(function () {
+        bindEvents();
         $("#sidebar").mCustomScrollbar({
             theme: "minimal"
         });
