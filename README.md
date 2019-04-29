@@ -22,5 +22,7 @@ Use this for jQuery
 | myQuest.html   | Quest Page |
 | rank.html      | Rank page  |
 | mypage.html    | Mypage     |
+| FindGuideQuest.html    | FindGuideQuest     |
+| travel_summary.html    | travel summary page    |
 
 
