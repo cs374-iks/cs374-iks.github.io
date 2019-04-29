@@ -197,10 +197,5 @@ function addThisQuest(id){
 function setOnclickOfButton(button,handle_function){
     button.setAttribute('onClick',handle_function);
 }
-
-
-
-
-
 initializeTable();
 addAllContentsToTable();
