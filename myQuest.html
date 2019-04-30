@@ -6,20 +6,37 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="static/css/style.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="static/css/custom_style.css">
 
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy|Pacifico|Pragati+Narrow" rel="stylesheet">
 </head>
 
 <body>
 <style type = 'text/css'>
-    .jumbotron {
-        background-image : url('static/images/quest_background.png');
+    .jumbotron{
+        background-image : url('static/images/jumbotron_img.jpg');
         background-size: cover;
+
+    }
+    .jumbotron h1{
         text-shadow: black 0.2em 0.2em 0.2em;
         color: white;
+        font-family: 'Luckiest Guy', cursive;
     }
+    .jumbotron p{
+        font-family: 'Pacifico', cursive;
+        color: black;
+    }
+
+    td{
+        font-family: 'Pragati Narrow', sans-serif;
+    }
+
+
 </style>
 <div class="wrapper">
     <nav class="navbar navbar-expand-md navbar-dark bg-secondary">
@@ -36,16 +53,16 @@
         <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Find Guide & Quest<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/FindGuideQuest.html">Find Guide & Quest<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">My Quest<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/myQuest.html">My Quest<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Mypage<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/mypage.html">Mypage<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Rank<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/rank.html">Rank<span class="sr-only">(current)</span></a>
                 </li>
             </ul>
         </div>
@@ -61,16 +78,16 @@
 
         <ul class="list-unstyled components">
             <li>
-                <a href="#">Find Guide & Quests</a>
+                <a href="/FindGuideQuest.html">Find Guide & Quests</a>
             </li>
             <li>
-                <a href="#">My Quests</a>
+                <a href="/myQuest.html">My Quests</a>
             </li>
             <li>
-                <a href="#">Mypage</a>
+                <a href="/mypage.html">Mypage</a>
             </li>
             <li>
-                <a href="#">Rank</a>
+                <a href="/rank.html">Rank</a>
             </li>
         </ul>
     </nav>
@@ -111,30 +128,21 @@
 </div>
 
 
-<div class = "container-fluid">
-    <table class = "table" id = 'quest_table'>
-        <thead>
-            <tr>
-                <th>Experts</th>
-                <th>Quest contents</th>
-                <th>Road View</th>
-                <th>Extra Functions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td> <img src="./static/images/people1.jpg" width = 100em alt="donald trump"></td>
-                <td>Visit Statue of Liberty, and take photo</td>
-                <td><img src="./static/images/table1.jpg" width = 100em alt="donald trump"></td>
-                <td>
 
-                    <a data-target = "#modal_map" data-toggle = "modal" role = 'button' >
-                        <img src="./static/images/quest_map.png" width = 100em alt="map icon">
-                    </a>
+<div class="jumbotron">
+    <h1 class="display-4">America</h1>
 
-                    <a class = "btn btn-success" data-target = "#modal_finish_quest" data-toggle = "modal" role = 'button' >I finish my quest!</a>
-                    <button class="btn btn-danger">Quit quest </button>
-                </td>
+    <p>Visit places that you choose, and memorize it. </p>
+
+</div>
+<!--quest table-->
+<div class = "container-fluid"  >
+    <table class = "table"  style = "width:100%;  font-size: 15px; " >
+
+        <tbody id = "quest_table">
+            <tr align = "center">
+
+
             </tr>
         </tbody>
     </table>
@@ -197,7 +205,7 @@
                     <button class = "close" data-dismiss = "modal">&times;</button>
                 </div>
                 <div class = "modal-body" style = "text-align : center">
-                    <button id = 'remove_quest_button' data-dismiss = "modal" onclick = "removeById('-1')">Yes, I want to quit my quest</button>
+                    <button class="btn btn-outline-danger" id = 'remove_quest_button' data-dismiss = "modal" onclick = "removeById('-1')">Yes, I want to quit my quest</button>
 
 
                 </div>
@@ -206,6 +214,7 @@
     </div>
 </div>
 
+<!--this is for profile -->
 <div class = "row">
     <div class = "modal" id = "modal_profile" tabindex = "-1">
         <div class = "modal-dialog">
@@ -215,6 +224,14 @@
                     <button class = "close" data-dismiss = "modal">&times;</button>
                 </div>
                 <div class = "modal-body" style = "text-align : center">
+                    <div class="card-body">
+                        <div class="media" id = "profile_instruction">
+
+
+                        </div>
+
+
+                    </div>
                     <table id = 'quest_on_profile'>
 
                     </table>
