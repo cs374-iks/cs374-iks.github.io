@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Chewy" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Passion+One" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
@@ -72,44 +74,46 @@
           </ul>
         </nav>
         <div class="content">
-        <div class="p-3 mb-2 bg-danger text-white">
+        <div class="p-3 mb-2 text-white" style="background: red; box-shadow: 10px 10px 10px rgb(48, 47, 47);outline: 2px solid black;">
         <h1 style = "font-family: 'Luckiest Guy', cursive; margin: 10px 10px 10px 10px; text-align: center">CONGRATULATIONS</h1>
         <p style = "text-align: center; font-size: 72px; color: white; font-family: 'Chewy', cursive;">You have just finished your trip!</p>
         <p id = "user_profile_image" style = "text-align: center;"></p>
         <p id = "username" style = "text-align: center; font-size: 30px; color: white;font-family: 'Ubuntu', sans-serif;"></p>
+        <p id = "level" style = "text-align: center; font-size: 48px; color: white; font-family: 'Passion One', cursive;"></p>
         <p id = "profile_status" style = "text-align: center; font-size: 30px; color: white; font-family: 'Indie Flower', cursive;"></p>
-        <p style = "text-align: center">
-            <span class="fa fa-star checked" style = "font-size: 90px"></span>
-            <span class="fa fa-star checked" style = "font-size: 90px"></span>
-            <span class="fa fa-star checked" style = "font-size: 90px"></span>
-            <span class="fa fa-star" style = "font-size: 90px"></span>
-            <span class="fa fa-star" style = "font-size: 90px"></span>
-          </p>
         </div>
-        <div class = "container-fluid p-3 mb-2 bg-light text-black" style = "text-align: center;">
-            <b style = "font-size: 20px">STATUS</b>
+        <div class = "container-fluid p-3 mb-2 text-white" style = "background: black;text-align: center; box-shadow: 10px 10px 10px rgb(48, 47, 47); outline: 2px solid black; margin-top: 15px">
+            <b style = "font-size: 60px">STATUS</b>
           <div class = "row">
               <div class = "col-sm">
-                  <p style = "font-family: 'Major Mono Display', monospace; font-size: 24px;color: black">countries<br>visited</p>
-                  <p style = "font-family: 'Baloo Bhaina', cursive; font-size: 108px; color: black" id = "countries_visited"></p>
+                  <p style = "font-family: 'Major Mono Display', monospace; font-size: 24px;color: white">countries<br>visited</p>
+                  <p style = "font-family: 'Baloo Bhaina', cursive; font-size: 108px; color: white" id = "countries_visited"></p>
               </div>
               <div class = "col-sm">
-                <p style = "font-family: 'Major Mono Display', monospace; font-size: 24px;color: black">quests<br>completed</p>
-                <p style = "font-family: 'Baloo Bhaina', cursive; font-size: 108px;color: black" id = "quests_completed"></p>
+                <p style = "font-family: 'Major Mono Display', monospace; font-size: 24px;color: white">quests<br>completed</p>
+                <p style = "font-family: 'Baloo Bhaina', cursive; font-size: 108px;color: white" id = "quests_completed"></p>
             </div>
             <div class = "col-sm">
-                <p style = "font-family: 'Major Mono Display', monospace; font-size: 24px;color: black">total<br>points</p>
-                <p style = "font-family: 'Baloo Bhaina', cursive; font-size: 108px; color: black" id = "total_points"></p>
+                <p style = "font-family: 'Major Mono Display', monospace; font-size: 24px;color: white">total<br>points</p>
+                <p style = "font-family: 'Baloo Bhaina', cursive; font-size: 108px; color: white" id = "total_points"></p>
             </div>
             </div>
+            <p style = "text-align: center; color: white; font-size: 30px;">You trip rating is:</p>
+            <p style = "text-align: center">
+                <span class="fa fa-star checked" style = "font-size: 90px"></span>
+                <span class="fa fa-star checked" style = "font-size: 90px"></span>
+                <span class="fa fa-star checked" style = "font-size: 90px"></span>
+                <span class="fa fa-star checked" style = "font-size: 90px"></span>
+                <span class="fa fa-star" style = "font-size: 90px"></span>
+              </p>
       </div>
-      <div class = "container-fluid p-3 mb-2 bg-dark text-white" style = "font-family: 'Baloo Bhaina', cursive; text-align: center;" id = "photo_section">
-          <b style = "margin: 10px 10px 10px 10px; font-size: 20px">PHOTOS</b>
-          <table align = center id = "imageTable" width = 100%>
+      <div class = "container-fluid p-3 mb-2 bg-white text-black" style = "text-align: center; box-shadow: 10px 10px 10px rgb(48, 47, 47); outline: 2px solid black; margin-top: 15px" id = "photo_section">
+          <b style = "margin: 10px 10px 10px 10px; font-size: 60px">PHOTOS</b>
+          <table align = center id = "imageTable" width = 75%>
               <tr>
-                <td style = "text-align: center" id = "image1"></td>
-                <td style = "text-align: center" id = "image2"></td>
-                <td style = "text-align: center" id = "image3"></td>
+                <td id = "image1"></td>
+                <td id = "image2"></td>
+                <td id = "image3"></td>
               </tr>
             </table>
           </div>

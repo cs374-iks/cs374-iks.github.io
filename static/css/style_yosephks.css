@@ -297,4 +297,7 @@ ul ul a {
     color:#FF912C;
   }
 
-  
+  td {
+    padding: 15px;
+    text-align: center;
+  }
