@@ -169,3 +169,13 @@ ul ul a {
   background-color: #555;
   color: white;
 }
+
+.rank {
+  padding: 50px 40px;
+}
+
+.table td
+{
+    text-align: center;
+    vertical-align: middle;
+}
