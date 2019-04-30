@@ -2,6 +2,7 @@ let currentTravelStatus = [
     {
         profile_image: "static/img/user_profile_img.jpg",
         username: "Tony Stark",
+        profile_status: "Genius billionare, playboy, philantropist",
         countries_visited: "1",
         quests_completed: "6",
         total_points: "180",
@@ -45,6 +46,7 @@ let QuestCompleted = [
 
 let profile_image = document.getElementById("user_profile_image");
 let username = document.getElementById("username");
+let profile_status = document.getElementById("profile_status");
 let countries_visited = document.getElementById("countries_visited");
 let quests_completed = document.getElementById("quests_completed");
 let total_points = document.getElementById("total_points");
@@ -77,6 +79,7 @@ function fillPhotoImage(divObj, img) {
 function bindEvents() {
     fillProfileImage(profile_image, currentTravelStatus[0].profile_image);
     fillContent(username, currentTravelStatus[0].username);
+    fillContent(profile_status, currentTravelStatus[0].profile_status);
     fillContent(countries_visited, currentTravelStatus[0].countries_visited);
     fillContent(quests_completed, currentTravelStatus[0].quests_completed);
     fillContent(total_points, currentTravelStatus[0].total_points);
@@ -84,7 +87,62 @@ function bindEvents() {
 }
 
 function AddImageContent() {
-   fillPhotoImage(image1, QuestCompleted[0].photos_uploaded);
-   fillPhotoImage(image2, QuestCompleted[1].photos_uploaded);
-   fillPhotoImage(image3, QuestCompleted[2].photos_uploaded);
+    fillPhotoImage(image1, QuestCompleted[0].photos_uploaded);
+    fillPhotoImage(image2, QuestCompleted[1].photos_uploaded);
+    fillPhotoImage(image3, QuestCompleted[2].photos_uploaded);
+
+    let numQuests = QuestCompleted.length
+
+    if (numQuests > 3) {
+        let numRow = Math.floor(numQuests / 3);
+        let numCell= numQuests % 3;
+
+        let countRow = 1;
+
+        while (countRow < (numRow - 1)) {
+            let countCell = 0;
+            let img1 = QuestCompleted[countRow * 3 + countCell].photo_uploaded;
+            let img2 = QuestCompleted[countRow * 3 + countCell + 1].photos_uploaded;
+            let img3 = QuestCompleted[countRow * 3 + countCell + 2].photos_uploaded;
+            AddRows(countRow, img1, img2, img3);
+            countRow += 1;
+        }
+
+        if (numCell == 0) {
+            let lastImg1 = QuestCompleted[countRow * 3 + countCell].photo_uploaded;
+            let lastImg2 = "..";
+            let lastImg3 = "..";
+            AddRows(countRow, lastImg1, lastImg2, lastImg3);
+
+        } if (numCell == 1) {
+            let lastImg1 = QuestCompleted[countRow * 3 + countCell].photo_uploaded;
+            let lastImg2 = QuestCompleted[countRow * 3 + countCell + 1].photos_uploaded;
+            let lastImg3 = "..";
+            AddRows(countRow, lastImg1, lastImg2, lastImg3);
+        } if (numCell == 2) {
+            let lastImg1 = QuestCompleted[countRow * 3 + countCell].photo_uploaded;
+            let lastImg2 = QuestCompleted[countRow * 3 + countCell + 1].photos_uploaded;
+            let lastImg3 = QuestCompleted[countRow * 3 + countCell + 2].photos_uploaded;
+            AddRows(countRow, lastImg1, lastImg2, lastImg3);
+        }
+    }
 } 
+
+function AddRows(insertNumRow, img1, img2, img3) {
+    createRow = table.insertRow(insertNumRow);
+
+    var cell1 = createRow.insertCell(0);
+    fillPhotoImage(cell1, img1);
+
+    if (cell2 != "..") {
+        var cell2 = createRow.insertCell(1);
+        fillPhotoImage(cell1, img2);
+    }
+
+    if (cell3 != "..") {
+        var cell3 = createRow. insertCell(2);
+        fillPhotoImage(cell1, img3);
+    }
+
+
+}
