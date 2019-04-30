@@ -114,6 +114,8 @@ function addAllContentsToTable() {
 
         }
     }
+
+
 }
 
 function updateGoogleMap(update_place){
