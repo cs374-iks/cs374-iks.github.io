@@ -16,8 +16,13 @@ Use this for jQuery
 
 ## Page Names
 
-| Filename     | Page      |
-| ------------ | --------- |
-| index.html   | Main Page |
+| Filename       | Page       |
+| -------------- | ---------- |
+| index.html     | Main Page  |
+| myQuest.html   | Quest Page |
+| rank.html      | Rank page  |
+| mypage.html    | Mypage     |
+| FindGuideQuest.html    | FindGuideQuest     |
+| travel_summary.html    | travel summary page    |
 
 

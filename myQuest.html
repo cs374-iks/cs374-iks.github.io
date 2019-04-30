@@ -1,0 +1,248 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/css/style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="static/css/custom_style.css">
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy|Pacifico|Pragati+Narrow" rel="stylesheet">
+</head>
+
+<body>
+<style type = 'text/css'>
+    .jumbotron{
+        background-image : url('static/images/jumbotron_img.jpg');
+        background-size: cover;
+
+    }
+    .jumbotron h1{
+        text-shadow: black 0.2em 0.2em 0.2em;
+        color: white;
+        font-family: 'Luckiest Guy', cursive;
+    }
+    .jumbotron p{
+        font-family: 'Pacifico', cursive;
+        color: black;
+    }
+
+    td{
+        font-family: 'Pragati Narrow', sans-serif;
+    }
+
+
+</style>
+<div class="wrapper">
+    <nav class="navbar navbar-expand-md navbar-dark bg-secondary">
+        <button class="navbar-toggler" type="button" id="sidebarCollapse" data-toggle="collapse" data-target="" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="mx-auto order-0">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="navbar-brand logo-nav" href="/">IKs<span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+        </div>
+        <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/FindGuideQuest.html">Find Guide & Quest<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/myQuest.html">My Quest<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/mypage.html">Mypage<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/rank.html">Rank<span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <nav id="sidebar">
+        <div id="dismiss">
+            <i class="fas fa-arrow-left" style="margin-top: 10px;"></i>
+            <!-- XXX : fix this margin-top-->
+        </div>
+        <div class="sidebar-header">
+            <h3>Menu</h3>
+        </div>
+
+        <ul class="list-unstyled components">
+            <li>
+                <a href="/FindGuideQuest.html">Find Guide & Quests</a>
+            </li>
+            <li>
+                <a href="/myQuest.html">My Quests</a>
+            </li>
+            <li>
+                <a href="/mypage.html">Mypage</a>
+            </li>
+            <li>
+                <a href="/rank.html">Rank</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="overlay"></div>
+    <div>
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#sidebar").mCustomScrollbar({
+                    theme: "minimal"
+                });
+
+                $('#dismiss, .overlay').on('click', function () {
+                    // hide sidebar
+                    $('#sidebar').removeClass('active');
+                    // hide overlay
+                    $('.overlay').removeClass('active');
+                });
+
+                $('#sidebarCollapse').on('click', function () {
+                    // open sidebar
+                    $('#sidebar').addClass('active');
+                    // fade in the overlay
+                    $('.overlay').addClass('active');
+                    $('.collapse.in').toggleClass('in');
+                    $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+                });
+            });
+        </script>
+    </div>
+</div>
+
+
+
+<div class="jumbotron">
+    <h1 class="display-4">America</h1>
+
+    <p>Visit places that you choose, and memorize it. </p>
+
+</div>
+<!--quest table-->
+<div class = "container-fluid"  >
+    <table class = "table"  style = "width:100%;  font-size: 15px; " >
+
+        <tbody id = "quest_table">
+            <tr align = "center">
+
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class = "row">
+    <div class = "modal" id = "modal_finish_quest" tabindex = "-1">
+        <div class = "modal-dialog">
+            <div class="modal-content">
+                <div class = "modal-header">
+                    upload your photo!
+                    <button class = "close" data-dismiss = "modal">&times;</button>
+                </div>
+                <div class = "modal-body" style = "text-align : center">
+                    <form id="form1" action="" method="post" enctype="multipart/form-data" target="repacatFrame">
+                        <input type="file" name="file">
+                        <!--<input type="submit">-->
+                    </form>
+                    <form action="">
+                        <textarea name="upload_quest_story" id="" cols="30" rows="10" placeholder="write your story!"></textarea>
+                        <!--<input type="submit">-->
+                    </form>
+                    <button id = "submit_quest_button" data-dismiss = "modal">Yay! I want upload it!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class = "row">
+    <div class = "modal" id = "modal_map" tabindex = "-1">
+        <div class = "modal-dialog">
+            <div class="modal-content">
+                <div class = "modal-header">
+                    Find your quest place!
+                    <button class = "close" data-dismiss = "modal">&times;</button>
+                </div>
+                <div class = "modal-body" style = "text-align : center">
+                    <iframe id = "map"
+                            width="400"
+                            height="400"
+                            frameborder="0" style="border:0"
+
+                            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBO_WwFts0d4UEd2BBjxoBTTqLHvi0FyqA&q=Space+Needle,Seattle+WA&maptype=roadmap&language=en"
+                    >
+                    </iframe>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class = "row">
+    <div class = "modal" id = "modal_quit_quest" tabindex = "-1">
+        <div class = "modal-dialog">
+            <div class="modal-content">
+                <div class = "modal-header">
+                    Are you sure to quit quest?
+                    <button class = "close" data-dismiss = "modal">&times;</button>
+                </div>
+                <div class = "modal-body" style = "text-align : center">
+                    <button class="btn btn-outline-danger" id = 'remove_quest_button' data-dismiss = "modal" onclick = "removeById('-1')">Yes, I want to quit my quest</button>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--this is for profile -->
+<div class = "row">
+    <div class = "modal" id = "modal_profile" tabindex = "-1">
+        <div class = "modal-dialog">
+            <div class="modal-content">
+                <div class = "modal-header">
+                    Profile page
+                    <button class = "close" data-dismiss = "modal">&times;</button>
+                </div>
+                <div class = "modal-body" style = "text-align : center">
+                    <div class="card-body">
+                        <div class="media" id = "profile_instruction">
+
+
+                        </div>
+
+
+                    </div>
+                    <table id = 'quest_on_profile'>
+
+                    </table>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="./static/js/myQuest.js"></script>
+</html>
