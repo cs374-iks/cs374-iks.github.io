@@ -1,6 +1,8 @@
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+@import url(https://fonts.googleapis.com/css?family=Play);
 body {
     background: #fafafa;
+    -webkit-user-select:none;
 }
 
 p {
@@ -300,4 +302,79 @@ ul ul a {
   td {
     padding: 15px;
     text-align: center;
+  }
+
+  /* Xp Bar CSS Style*/
+  
+  #xp-bar{
+    height:10px;
+    width:45%;
+    background:#333;
+    margin-left:auto;
+    display:inline-block;
+    vertical-align:middle;
+    text-align: center;
+  }
+  
+  #xp-bar-fill{
+    height:100%;
+    width:0.1%;
+    background:#3af;
+    font-size:12px;
+    line-height:10px;
+    text-align:right;
+  }
+  
+  #xp-increase-fx{
+    position:relative;
+    display:none;
+    height:100%;
+  }
+  
+  .xp-increase-glow1{
+    position:absolute;
+    margin:0px 0px 0px -2px;
+    left:0px;
+    top:0px;
+    background:#fff;
+    width:5px;
+    height:100%;
+    border-radius:0px;
+    -webkit-filter:blur(2px);
+  }
+  
+  .xp-increase-glow2{
+    position:absolute;
+    margin:-5px 0px 0px -2px;
+    left:0px;
+    top:0px;
+    background:#aaf;
+    width:5px;
+    height:200%;
+    border-radius:0px;
+    -webkit-filter:blur(10px);
+  }
+  
+  .xp-increase-glow3{
+    position:absolute;
+    margin:0px 0px 0px -5px;
+    left:0px;
+    top:0px;
+    background:#fff;
+    width:10px;
+    height:100%;
+    border-radius:5px;
+    -webkit-filter:blur(5px);
+  }
+  
+
+  .btn{
+    cursor: pointer;
+    text-align: center;
+    transition-property: background;
+    transition-duration: 1s;
+    transition-timing-function: ease-out;
+  }
+  .btn:hover {
+    background: #2db34a;
   }
