@@ -56,9 +56,10 @@ let profile= [
 let quest_table =document.getElementById('quest_table');
 let google_map = document.getElementById('map');
 let remove_quest_button = document.getElementById('remove_quest_button');
-let submit_quest_button = document.getElementById('submit_quest_button');
+let upload_button = document.getElementById('upload_button');
 let profile_quest_table = document.getElementById('quest_on_profile');
 let profile_instruction = document.getElementById('profile_instruction');
+let selected_file;
 
 function fillContent(divObj, content) {
     divObj.innerHTML = content;
@@ -105,7 +106,7 @@ function addAllContentsToTable() {
             col4.innerHTML =
                     `
                     <a class = "btn btn-outline-success" data-target = "#modal_finish_quest" data-toggle = "modal" role = 'button' 
-                    onclick = "setOnclickOfButton(submit_quest_button,'completeQuest(${current_quest[i].id})')" style = "font-size : 10px; width:70px" >Complete
+                    onclick = "setOnclickOfButton(upload_button,'uploadFile(${current_quest[i].id})')" style = "font-size : 10px; width:70px" >Complete
                     
                     </a>
                     <p></p>
@@ -133,16 +134,6 @@ function removeById(id){//function when 'Quit quest'
     }
 }
 
-function completeQuest(id){ //function when 'click I finish my quest!'
-    for (let i = 0; i < current_quest.length; i++){
-        if (current_quest[i].id ==id){
-            current_quest[i].quest_status = true;
-        }
-        initializeTable();
-        addAllContentsToTable();
-    }
-
-}
 
 function clickProfile(){ //function when click profile image
 
@@ -213,6 +204,44 @@ function addThisQuest(id){
 
 function setOnclickOfButton(button,handle_function){
     button.setAttribute('onClick',handle_function);
+}
+//handling file upload
+$("#file").on("change",function(event){
+   selected_file = event.target.files[0];
+});
+
+function uploadFile(id){
+    let filename = selected_file.name;
+    let storageRef = firebase.storage().ref('/tesetImages/'+filename);
+    let uploadTask = storageRef.put(selected_file);
+
+    uploadTask.on('state_changed',function(snapshot) {
+    },function (error) {
+    },function(){
+        let post_key = firebase.database().ref("Diary/").push().key;
+        uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+            console.log('File available at', downloadURL);
+            let updates = {};
+            let postDiary = {
+                url : downloadURL,
+                diary : $("#imageCaption").val()
+            }
+            updates['/Diary/'+post_key] = postDiary;
+            firebase.database().ref().update(updates);
+
+            for (let i = 0; i < current_quest.length; i++){
+                if (current_quest[i].id ==id){
+                    current_quest[i].quest_status = true;
+                }
+                initializeTable();
+                addAllContentsToTable();
+            }
+
+        });
+
+    });
+
+
 }
 initializeTable();
 addAllContentsToTable();
