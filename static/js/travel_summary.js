@@ -1,6 +1,6 @@
 let currentTravelStatus = [
     {
-        profile_image: "./static/img/user_profile_img.jpg",
+        profile_img: "./static/img/user_profile_img.jpg",
         username: "Anthony Edward Stark",
         total_points: "1200",
         level: "35",
@@ -12,67 +12,81 @@ let currentTravelStatus = [
 
 let QuestCompleted = [
     {
-        photos_uploaded: "./static/img/img1.jpg",
+        place_img: "./static/img/img1.jpg",
         imgID : "img_1",
         comment_uploaded: "It's Great",
         quest_content: "Visit the Statue of Liberty, and take photo",
-        guide_profile_image: "./static/images/people1.jpg",
-        location: "Statue of Liberty, New York",
-        id: "QuestCompleted1"
+        quest_provider_name : "Ronald Rump",
+        quest_provider_picture: "./static/images/people1.jpg",
+        place_name: "Statue of Liberty, New York",
+        country_name: "United States America",
+        quest_id: "QuestCompleted1"
     },
     {
-        photos_uploaded: "./static/img/img2.jpg",
+        place_img: "./static/img/img2.jpg",
         imgID : "img_2",
         comment_uploaded: "It's Bad",
         quest_content: "Visit the Empire State Building, and take photo",
-        guide_profile_image: "./static/images/people2.jpg",
-        location: "Empire State Building, New York",
-        id: "QuestCompleted2"
+        quest_provider_name : "Obama",
+        quest_provider_picture: "./static/images/people2.jpg",
+        place_name: "Empire State Building, New York",
+        country_name: "United States America",
+        quest_id: "QuestCompleted2"
     },
     {
-        photos_uploaded: "./static/img/img3.jpg",
+        place_img: "./static/img/img3.jpg",
         imgID : "img_3",
         comment_uploaded: "It feels as if I am meeting George W Bush",
         quest_content: "Visit Times Square, and take photo",
-        guide_profile_image: "./static/images/people3.jpg",
-        location: "Times Square, New York",
-        id: "QuestCompleted3"
+        quest_provider_name : "Dwight Eisenhower",
+        quest_provider_picture: "./static/images/people3.jpg",
+        place_name: "Times Square, New York",
+        country_name: "United States America",
+        quest_id: "QuestCompleted3"
     },
     {
-        photos_uploaded: "./static/img/img5.jpg",
+        place_img: "./static/img/img5.jpg",
         imgID : "img_4",
         comment_uploaded: "It feels as if I am meeting George W Bush",
         quest_content: "Visit somewhere around New York",
-        guide_profile_image: "./static/images/people3.jpg",
-        location: "Somewhere around New York",
-        id: "QuestCompleted4"
+        quest_provider_name : "George W Bush",
+        quest_provider_picture: "./static/images/people3.jpg",
+        place_name: "Somewhere around New York",
+        country_name: "United States America",
+        quest_id: "QuestCompleted4"
     },
     {
-        photos_uploaded: "./static/img/img6.jpg",
+        place_img: "./static/img/img6.jpg",
         imgID : "img_5",
         comment_uploaded: "I am Iron Man",
         quest_content: "Visit Hollywoord",
-        guide_profile_image: "./static/images/people3.jpg",
-        location: "Hollywood",
-        id: "QuestCompleted5"
+        quest_provider_name : "Ronald Reagan",
+        quest_provider_picture: "./static/images/people3.jpg",
+        place_name: "Hollywood",
+        country_name: "United States America",
+        quest_id: "QuestCompleted5"
     },
     {
-        photos_uploaded: "./static/img/img7.jpeg",
+        place_img: "./static/img/img7.jpeg",
         imgID : "img_6",
         comment_uploaded: "I am Iron Man",
         quest_content: "Visit Hollywoord",
-        guide_profile_image: "./static/images/people3.jpg",
-        location: "Hollywood",
-        id: "QuestCompleted6"
+        quest_provider_name : "Nicolas Fury",
+        quest_provider_picture: "./static/images/people3.jpg",
+        place_name: "Hollywood",
+        country_name: "United States America",
+        quest_id: "QuestCompleted6"
     },
     {
-        photos_uploaded: "./static/img/img8.jpg",
+        place_img: "./static/img/img8.jpg",
         imgID : "img_7",
         comment_uploaded: "Battle of New York",
         quest_content: "Battling Ultron in New York",
-        guide_profile_image: "./static/images/people3.jpg",
-        location: "New York City",
-        id: "QuestCompleted7"
+        quest_provider_name : "Avengers",
+        quest_provider_picture: "./static/images/people3.jpg",
+        place_name: "New York City",
+        country_name: "United States America",
+        quest_id: "QuestCompleted7"
     }
 ];
 
@@ -112,7 +126,7 @@ function fillPhotoImage(divObj, img, imgID) {
 }
 
 function bindEvents() {
-    fillProfileImage(profile_image, currentTravelStatus[0].profile_image);
+    fillProfileImage(profile_image, currentTravelStatus[0].profile_img);
     fillContent(username, currentTravelStatus[0].username);
     fillContent(level, ("Level " + currentTravelStatus[0].level));
     fillContent(countries_visited, currentTravelStatus[0].countries_visited);
@@ -173,13 +187,13 @@ function AddRows(img1, img2, img3) {
     cell2.className = "col-sm-auto";
     cell3.className = "col-sm-auto";
 
-    fillPhotoImage(cell1, QuestCompleted[img1].photos_uploaded, QuestCompleted[img1].imgID);
+    fillPhotoImage(cell1, QuestCompleted[img1].place_img, QuestCompleted[img1].imgID);
     if (img2 == "..") {
         cell2.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
         //fillPhotoImage(cell2, "./static/img/transparent_background.png", "blank");
     } else {
         cell2.style.paddingBottom = "30px";
-        fillPhotoImage(cell2, QuestCompleted[img2].photos_uploaded, QuestCompleted[img2].imgID);
+        fillPhotoImage(cell2, QuestCompleted[img2].place_img, QuestCompleted[img2].imgID);
     }
 
     if (img3 == "..") {
@@ -187,7 +201,7 @@ function AddRows(img1, img2, img3) {
         //fillPhotoImage(cell3, "./static/img/transparent_background.png", "blank");
     } else {
         cell3.style.paddingBottom = "30px";
-        fillPhotoImage(cell3, QuestCompleted[img3].photos_uploaded, QuestCompleted[img3].imgID);
+        fillPhotoImage(cell3, QuestCompleted[img3].place_img, QuestCompleted[img3].imgID);
     }
 
     createRow.appendChild(cell1);
