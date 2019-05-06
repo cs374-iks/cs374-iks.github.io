@@ -59,11 +59,9 @@ let remove_quest_button = document.getElementById('remove_quest_button');
 let upload_button = document.getElementById('upload_button');
 let profile_quest_table = document.getElementById('quest_on_profile');
 let profile_instruction = document.getElementById('profile_instruction');
-let selected_file;
+let selected_file; //variable for currently uploaded image file
 
-function fillContent(divObj, content) {
-    divObj.innerHTML = content;
-}
+
 function initializeTable() {
     /*
       Initialize the courses in the right plane
@@ -73,6 +71,20 @@ function initializeTable() {
         quest_table.deleteRow(1);
     }
 
+}
+
+function readFromDatabase() {
+    return firebase.database().ref('/Quests/').on('value', function(snapshot) {
+        // initializeTable();
+
+        var myValue = snapshot.val();
+        current_quest = myValue.Quests;
+
+
+        console.log(myValue);
+        addAllContentsToTable();
+
+    });
 }
 
 function addAllContentsToTable() {
@@ -129,9 +141,14 @@ function removeById(id){//function when 'Quit quest'
         if (current_quest[i].id ==id){
             current_quest.splice(i,1);
         }
-        initializeTable();
-        addAllContentsToTable();
+
     }
+    var newKey = firebase.database().ref('/Quests');
+    newKey.set({
+        Quests:current_quest
+    });
+    initializeTable();
+    addAllContentsToTable();
 }
 
 
@@ -193,6 +210,13 @@ function addThisQuest(id){
             disable_button.class = 'btn btn-outline-warning';
             disable_button.innerHTML = "Already Added"
 
+
+
+            var newKey = firebase.database().ref('/Quests');
+            newKey.set({
+                Quests:current_quest
+            });
+
         }
 
     }
@@ -221,6 +245,7 @@ function uploadFile(id){
         let post_key = firebase.database().ref("Diary/").push().key;
         uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
             console.log('File available at', downloadURL);
+
             let updates = {};
             let postDiary = {
                 url : downloadURL,
@@ -233,15 +258,23 @@ function uploadFile(id){
                 if (current_quest[i].id ==id){
                     current_quest[i].quest_status = true;
                 }
-                initializeTable();
-                addAllContentsToTable();
             }
 
+            var newKey = firebase.database().ref('/Quests');
+            newKey.set({
+                Quests:current_quest
+            });
+            initializeTable();
+            addAllContentsToTable();
+
         });
+
+
 
     });
 
 
 }
 initializeTable();
-addAllContentsToTable();
+//addAllContentsToTable();
+readFromDatabase();
