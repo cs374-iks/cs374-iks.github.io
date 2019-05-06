@@ -1,32 +1,14 @@
 let current_quest = [
     {
-        profile_img:"./static/images/people1.jpg",
+        profile_id : "asdf",
+        point : "15",
         quest_content: "Visit Statue of Liberty, and take photo",
         place_img : "./static/images/table1.jpg",
         place_name : "statue of liberty",
         quest_status : false,
-        id : "1"
+        quest_id : "1"
 
     },
-    {
-        profile_img:"./static/images/people2.jpg",
-        quest_content: "Go to Times Squre, and eat Mcdonald's",
-        place_img : "./static/images/table3.jpg",
-        place_name : "Times Square",
-        quest_status : false,
-        id : "2"
-    },
-    {
-        profile_img:"./static/images/people3.jpg",
-        quest_content: "Visit The Metroplitan museum ",
-        place_img : "./static/images/table4.jpg",
-        place_name : "metropolitan museum",
-        quest_status : false,
-        id : "3"
-    }
-];
-
-let improved_current_quest =  [
     {
         profile_id : "asdf",
         point : "15",
@@ -39,21 +21,16 @@ let improved_current_quest =  [
     },
     {
         profile_id : "asdf",
-        quest_content: "Go to Times Squre, and eat Mcdonald's",
-        place_img : "./static/images/table3.jpg",
-        place_name : "Times Square",
+        point : "15",
+        quest_content: "Visit Statue of Liberty, and take photo",
+        place_img : "./static/images/table1.jpg",
+        place_name : "statue of liberty",
         quest_status : false,
-        id : "2"
-    },
-    {
-        profile_id : "asdf",
-        quest_content: "Visit The Metroplitan museum ",
-        place_img : "./static/images/table4.jpg",
-        place_name : "metropolitan museum",
-        quest_status : false,
-        id : "3"
+        quest_id : "1"
+
     }
 ];
+
 
 let profile= [
     {
@@ -65,53 +42,27 @@ let profile= [
     }
     ,
     {
-        profile_img:"./static/images/people1.jpg",
+        profile_id : "asdf",
+        point : "15",
         quest_content: "Visit Statue of Liberty, and take photo",
         place_img : "./static/images/table1.jpg",
         place_name : "statue of liberty",
-        quest_status: false,
-        id : "1"
+        quest_status : false,
+        quest_id : "1"
     },
     {
-        profile_img:"./static/images/people1.jpg",
-        quest_content: "Visit Broadway, and choose one musical and watch it!",
+        profile_id : "asdf",
+        point : "15",
+        quest_content: "Broadway!",
         place_img : "./static/images/table2.jpg",
-        place_name : "Broadway",
-        quest_status: false,
-        id : "4"
+        place_name : "Broadway, New York city",
+        quest_status : false,
+        quest_id : "4"
     }
 
 ]
 
-let improved_profile= [
-    {
 
-        quest_provider_picture: "./static/images/people1.jpg",
-        quest_provider_name : "Ronald Rump",
-        quest_provider_introduction : "Hello, my name is Ronald Rump. I love trucks and wall. BING BING BONG!",
-        profile_id : "Asdf"
-
-
-    }
-    ,
-    {
-        profile_img:"./static/images/people1.jpg",
-        quest_content: "Visit Statue of Liberty, and take photo",
-        place_img : "./static/images/table1.jpg",
-        place_name : "statue of liberty",
-        quest_status: false,
-        id : "1"
-    },
-    {
-        profile_img:"./static/images/people1.jpg",
-        quest_content: "Visit Broadway, and choose one musical and watch it!",
-        place_img : "./static/images/table2.jpg",
-        place_name : "Broadway",
-        quest_status: false,
-        id : "4"
-    }
-
-]
 
 let quest_table =document.getElementById('quest_table');
 let google_map = document.getElementById('map');
@@ -178,12 +129,12 @@ function addAllContentsToTable() {
             col4.innerHTML =
                     `
                     <a class = "btn btn-outline-success" data-target = "#modal_finish_quest" data-toggle = "modal" role = 'button' 
-                    onclick = "setOnclickOfButton(upload_button,'uploadFile(${current_quest[i].id})')" style = "font-size : 10px; width:70px" >Complete
+                    onclick = "setOnclickOfButton(upload_button,'uploadFile(${current_quest[i].quest_id})')" style = "font-size : 10px; width:70px" >Complete
                     
                     </a>
                     <p></p>
                     <a class="btn btn-outline-danger" data-target = "#modal_quit_quest" data-toggle = "modal" role = 'button' 
-                    onclick="setOnclickOfButton(remove_quest_button,'removeById(${current_quest[i].id})')" style = "font-size : 10px; width: 70px" >Quit</a>`
+                    onclick="setOnclickOfButton(remove_quest_button,'removeById(${current_quest[i].quest_id})')" style = "font-size : 10px; width: 70px" >Quit</a>`
 
         }
     }
@@ -198,7 +149,7 @@ function updateGoogleMap(update_place){
 
 function removeById(id){//function when 'Quit quest'
     for (let i = 0; i < current_quest.length; i++){
-        if (current_quest[i].id ==id){
+        if (current_quest[i].quest_id ==id){
             current_quest.splice(i,1);
         }
 
@@ -243,15 +194,15 @@ function clickProfile(){ //function when click profile image
         //col4.innerHTML = `<a data-target = "#modal_map" data-toggle = "modal" role = 'button' onclick=`+"updateGoogleMap(${profile[i].place_name});>press here </a>"
 
         for (let j = 0; j < current_quest.length ; j ++){
-            if (profile[i].id == current_quest[j].id){
+            if (profile[i].quest_id == current_quest[j].quest_id){
                 alreadyAdded = true;
             }
         }
         if (alreadyAdded){
-            col3.innerHTML = `<button id="button_${profile[i].id}" class = 'btn btn-outline-warning' onclick = addThisQuest('${profile[i].id}') disabled = true style = 'font-size:10px'>Already Added</button>`
+            col3.innerHTML = `<button id="button_${profile[i].quest_id}" class = 'btn btn-outline-warning' onclick = addThisQuest('${profile[i].quest_id}') disabled = true style = 'font-size:10px'>Already Added</button>`
         }
         else{
-            col3.innerHTML = `<button id="button_${profile[i].id}" class = 'btn btn-outline-primary' onclick = addThisQuest('${profile[i].id}') style = 'font-size:10px'>Add Quest</button>`
+            col3.innerHTML = `<button id="button_${profile[i].quest_id}" class = 'btn btn-outline-primary' onclick = addThisQuest('${profile[i].quest_id}') style = 'font-size:10px'>Add Quest</button>`
         }
 
 
@@ -259,13 +210,14 @@ function clickProfile(){ //function when click profile image
     }
 
 
+
 }
 
 function addThisQuest(id){
     for (let i = 1; i < profile.length; i++){
-        if (profile[i].id ==id){
+        if (profile[i].quest_id ==id){
             current_quest.push(profile[i])
-            let disable_button = document.getElementById(`button_${profile[i].id}`);
+            let disable_button = document.getElementById(`button_${profile[i].quest_id}`);
             disable_button.disabled = true;
             disable_button.class = 'btn btn-outline-warning';
             disable_button.innerHTML = "Already Added"
@@ -305,20 +257,31 @@ function uploadFile(id){
         let post_key = firebase.database().ref("Diary/").push().key;
         uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
             console.log('File available at', downloadURL);
+            let clicking_quest;
+            for (let i = 0; i < current_quest.length; i++){
+                if (current_quest[i].quest_id ==id){
+                    current_quest[i].quest_status = true;
+                    clicking_quest = current_quest[i]
+                }
+            }
 
             let updates = {};
             let postDiary = {
                 url : downloadURL,
-                diary : $("#imageCaption").val()
+                imgID: post_key,
+                diary : $("#imageCaption").val(),
+                quest_content: "Visit the Empire State Building, and take photo",
+                quest_provider_name : "Obama",
+                quest_provider_picture: "./static/images/people2.jpg",
+                place_name: "Empire State Building, New York",
+                country_name: "United States America"
+
+
             }
             updates['/Diary/'+post_key] = postDiary;
             firebase.database().ref().update(updates);
 
-            for (let i = 0; i < current_quest.length; i++){
-                if (current_quest[i].id ==id){
-                    current_quest[i].quest_status = true;
-                }
-            }
+
 
             var newKey = firebase.database().ref('/Quests');
             newKey.set({
