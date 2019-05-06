@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="86d646b3-cc30-49f0-97b4-968d98d2056b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myQuest.html" beforeDir="false" afterPath="$PROJECT_DIR$/myQuest.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/js/myQuest.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/myQuest.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -20,8 +19,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/myQuest.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="188" column="57" lean-forward="true" selection-start-line="188" selection-start-column="57" selection-end-line="188" selection-end-column="57" />
+            <state relative-caret-position="-456">
+              <caret line="181" column="71" lean-forward="true" selection-start-line="181" selection-start-column="71" selection-end-line="181" selection-end-column="71" />
               <folding>
                 <element signature="n#style#0;n#i#0;n#div#0;n#nav#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#table#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -55,8 +54,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/js/myQuest.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="356">
-              <caret line="262" column="59" lean-forward="true" selection-start-line="262" selection-start-column="59" selection-end-line="262" selection-end-column="59" />
+            <state relative-caret-position="133">
+              <caret line="31" column="21" lean-forward="true" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="21" />
               <folding>
                 <element signature="n#style#0;n#a#1;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
@@ -118,6 +117,7 @@
       <find>submit_quest_button</find>
       <find>removebyid</find>
       <find>complete</find>
+      <find>remove</find>
     </findStrings>
     <replaceStrings>
       <replace>current_quest</replace>
@@ -241,12 +241,13 @@
       <workItem from="1557044663807" duration="737000" />
       <workItem from="1557049655547" duration="5186000" />
       <workItem from="1557055009792" duration="455000" />
-      <workItem from="1557118657864" duration="2418000" />
+      <workItem from="1557118657864" duration="2798000" />
+      <workItem from="1557147623697" duration="2829000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48523000" />
+    <option name="totallyTimeSpent" value="51732000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="55" y="-7" width="1488" height="878" extended-state="6" />
@@ -327,8 +328,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/myQuest.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="188" column="57" lean-forward="true" selection-start-line="188" selection-start-column="57" selection-end-line="188" selection-end-column="57" />
+        <state relative-caret-position="-456">
+          <caret line="181" column="71" lean-forward="true" selection-start-line="181" selection-start-column="71" selection-end-line="181" selection-end-column="71" />
           <folding>
             <element signature="n#style#0;n#i#0;n#div#0;n#nav#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#table#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -341,8 +342,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/myQuest.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="262" column="59" lean-forward="true" selection-start-line="262" selection-start-column="59" selection-end-line="262" selection-end-column="59" />
+        <state relative-caret-position="133">
+          <caret line="31" column="21" lean-forward="true" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="21" />
           <folding>
             <element signature="n#style#0;n#a#1;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />

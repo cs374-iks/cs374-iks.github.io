@@ -6,6 +6,7 @@ let current_quest = [
         place_name : "statue of liberty",
         quest_status : false,
         id : "1"
+
     },
     {
         profile_img:"./static/images/people2.jpg",
@@ -25,8 +26,38 @@ let current_quest = [
     }
 ];
 
+let improved_current_quest =  [
+    {
+        profile_id : "asdf",
+        point : "15",
+        quest_content: "Visit Statue of Liberty, and take photo",
+        place_img : "./static/images/table1.jpg",
+        place_name : "statue of liberty",
+        quest_status : false,
+        quest_id : "1"
+
+    },
+    {
+        profile_id : "asdf",
+        quest_content: "Go to Times Squre, and eat Mcdonald's",
+        place_img : "./static/images/table3.jpg",
+        place_name : "Times Square",
+        quest_status : false,
+        id : "2"
+    },
+    {
+        profile_id : "asdf",
+        quest_content: "Visit The Metroplitan museum ",
+        place_img : "./static/images/table4.jpg",
+        place_name : "metropolitan museum",
+        quest_status : false,
+        id : "3"
+    }
+];
+
 let profile= [
     {
+
         quest_provider_picture: "./static/images/people1.jpg",
         quest_provider_name : "Ronald Rump",
         quest_provider_introduction : "Hello, my name is Ronald Rump. I love trucks and wall. BING BING BONG!"
@@ -52,6 +83,35 @@ let profile= [
 
 ]
 
+let improved_profile= [
+    {
+
+        quest_provider_picture: "./static/images/people1.jpg",
+        quest_provider_name : "Ronald Rump",
+        quest_provider_introduction : "Hello, my name is Ronald Rump. I love trucks and wall. BING BING BONG!",
+        profile_id : "Asdf"
+
+
+    }
+    ,
+    {
+        profile_img:"./static/images/people1.jpg",
+        quest_content: "Visit Statue of Liberty, and take photo",
+        place_img : "./static/images/table1.jpg",
+        place_name : "statue of liberty",
+        quest_status: false,
+        id : "1"
+    },
+    {
+        profile_img:"./static/images/people1.jpg",
+        quest_content: "Visit Broadway, and choose one musical and watch it!",
+        place_img : "./static/images/table2.jpg",
+        place_name : "Broadway",
+        quest_status: false,
+        id : "4"
+    }
+
+]
 
 let quest_table =document.getElementById('quest_table');
 let google_map = document.getElementById('map');
