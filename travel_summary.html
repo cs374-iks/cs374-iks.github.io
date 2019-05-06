@@ -74,7 +74,7 @@
           </ul>
         </nav>
         <div class="content">
-        <div class="p-3 mb-2 text-black" style="background-image: url(./static/img/background_image.jpg); box-shadow: 10px 10px 10px rgb(48, 47, 47);outline: 2px solid black;">
+        <div class="p-3 mb-2 text-black" id = "background" style="box-shadow: 10px 10px 10px rgb(48, 47, 47);outline: 2px solid black;">
         <h2 style = "font-family: 'Luckiest Guy', cursive; margin: 10px 10px 10px 10px; text-align: center; color: black;">CONGRATULATIONS</h2>
         <p style = "text-align: center; font-size: 50px; color: black; font-family: 'Chewy', cursive; line-height: 35px;">You have just finished your trip!</p>
         <p id = "user_profile_image" style = "text-align: center;"></p>
@@ -125,6 +125,32 @@
     <div class = "overlay"></div>
     <a href = "./mypage.html"><button class = "btn btn-outline-success" style = "margin: 20px 20px 20px 20px; float: right; width: 100px; height: 50px">Close</button></a>
     <div>
+
+    <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Launch demo modal
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

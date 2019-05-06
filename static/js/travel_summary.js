@@ -1,6 +1,7 @@
 let currentTravelStatus = [
     {
         profile_img: "./static/img/user_profile_img.jpg",
+        background_image: "./static/img/background_image.jpg",
         username: "Anthony Edward Stark",
         total_points: "1200",
         level: "35",
@@ -12,9 +13,9 @@ let currentTravelStatus = [
 
 let QuestCompleted = [
     {
-        place_img: "./static/img/img1.jpg",
+        url: "./static/img/img1.jpg",
         imgID : "img_1",
-        comment_uploaded: "It's Great",
+        diary: "It's Great",
         quest_content: "Visit the Statue of Liberty, and take photo",
         quest_provider_name : "Ronald Rump",
         quest_provider_picture: "./static/images/people1.jpg",
@@ -23,9 +24,9 @@ let QuestCompleted = [
         quest_id: "QuestCompleted1"
     },
     {
-        place_img: "./static/img/img2.jpg",
+        url: "./static/img/img2.jpg",
         imgID : "img_2",
-        comment_uploaded: "It's Bad",
+        diary: "It's Bad",
         quest_content: "Visit the Empire State Building, and take photo",
         quest_provider_name : "Obama",
         quest_provider_picture: "./static/images/people2.jpg",
@@ -34,9 +35,9 @@ let QuestCompleted = [
         quest_id: "QuestCompleted2"
     },
     {
-        place_img: "./static/img/img3.jpg",
+        url: "./static/img/img3.jpg",
         imgID : "img_3",
-        comment_uploaded: "It feels as if I am meeting George W Bush",
+        diary: "It feels as if I am meeting George W Bush",
         quest_content: "Visit Times Square, and take photo",
         quest_provider_name : "Dwight Eisenhower",
         quest_provider_picture: "./static/images/people3.jpg",
@@ -45,9 +46,9 @@ let QuestCompleted = [
         quest_id: "QuestCompleted3"
     },
     {
-        place_img: "./static/img/img5.jpg",
+        url: "./static/img/img5.jpg",
         imgID : "img_4",
-        comment_uploaded: "It feels as if I am meeting George W Bush",
+        diary: "It feels as if I am meeting George W Bush",
         quest_content: "Visit somewhere around New York",
         quest_provider_name : "George W Bush",
         quest_provider_picture: "./static/images/people3.jpg",
@@ -56,9 +57,9 @@ let QuestCompleted = [
         quest_id: "QuestCompleted4"
     },
     {
-        place_img: "./static/img/img6.jpg",
+        url: "./static/img/img6.jpg",
         imgID : "img_5",
-        comment_uploaded: "I am Iron Man",
+        diary: "I am Iron Man",
         quest_content: "Visit Hollywoord",
         quest_provider_name : "Ronald Reagan",
         quest_provider_picture: "./static/images/people3.jpg",
@@ -67,9 +68,9 @@ let QuestCompleted = [
         quest_id: "QuestCompleted5"
     },
     {
-        place_img: "./static/img/img7.jpeg",
+        url: "./static/img/img7.jpeg",
         imgID : "img_6",
-        comment_uploaded: "I am Iron Man",
+        diary: "I am Iron Man",
         quest_content: "Visit Hollywoord",
         quest_provider_name : "Nicolas Fury",
         quest_provider_picture: "./static/images/people3.jpg",
@@ -78,9 +79,9 @@ let QuestCompleted = [
         quest_id: "QuestCompleted6"
     },
     {
-        place_img: "./static/img/img8.jpg",
+        url: "./static/img/img8.jpg",
         imgID : "img_7",
-        comment_uploaded: "Battle of New York",
+        diary: "Battle of New York",
         quest_content: "Battling Ultron in New York",
         quest_provider_name : "Avengers",
         quest_provider_picture: "./static/images/people3.jpg",
@@ -91,6 +92,7 @@ let QuestCompleted = [
 ];
 
 let profile_image = document.getElementById("user_profile_image");
+let background = document.getElementById("background");
 let username = document.getElementById("username");
 let level = document.getElementById("level");
 let profile_status = document.getElementById("profile_status");
@@ -133,12 +135,13 @@ function bindEvents() {
     fillContent(quests_completed, currentTravelStatus[0].quests_completed);
     fillContent(gained_points, currentTravelStatus[0].gained_points);
     AddImageContent();
+    AddBackgroundImage(currentTravelStatus.background_image);
 }
 
 function AddImageContent() {
-    fillPhotoImage(image1, QuestCompleted[0].photos_uploaded, QuestCompleted[0].imgID);
-    fillPhotoImage(image2, QuestCompleted[1].photos_uploaded, QuestCompleted[1].imgID);
-    fillPhotoImage(image3, QuestCompleted[2].photos_uploaded, QuestCompleted[2].imgID);
+    fillPhotoImage(image1, QuestCompleted[0].url, QuestCompleted[0].imgID);
+    fillPhotoImage(image2, QuestCompleted[1].url, QuestCompleted[1].imgID);
+    fillPhotoImage(image3, QuestCompleted[2].url, QuestCompleted[2].imgID);
 
     let numQuests = QuestCompleted.length;
     if (numQuests > 3) {
@@ -187,13 +190,13 @@ function AddRows(img1, img2, img3) {
     cell2.className = "col-sm-auto";
     cell3.className = "col-sm-auto";
 
-    fillPhotoImage(cell1, QuestCompleted[img1].place_img, QuestCompleted[img1].imgID);
+    fillPhotoImage(cell1, QuestCompleted[img1].url, QuestCompleted[img1].imgID);
     if (img2 == "..") {
         cell2.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
         //fillPhotoImage(cell2, "./static/img/transparent_background.png", "blank");
     } else {
         cell2.style.paddingBottom = "30px";
-        fillPhotoImage(cell2, QuestCompleted[img2].place_img, QuestCompleted[img2].imgID);
+        fillPhotoImage(cell2, QuestCompleted[img2].url, QuestCompleted[img2].imgID);
     }
 
     if (img3 == "..") {
@@ -201,7 +204,7 @@ function AddRows(img1, img2, img3) {
         //fillPhotoImage(cell3, "./static/img/transparent_background.png", "blank");
     } else {
         cell3.style.paddingBottom = "30px";
-        fillPhotoImage(cell3, QuestCompleted[img3].place_img, QuestCompleted[img3].imgID);
+        fillPhotoImage(cell3, QuestCompleted[img3].url, QuestCompleted[img3].imgID);
     }
 
     createRow.appendChild(cell1);
@@ -228,6 +231,13 @@ function flicker(){
     setTimeout(function(){$("#xp-bar-fill").css({"-webkit-transition":"all 0.5s ease","box-shadow":""});},2000);
   }  
 
+/*
+  Use this function to add the background image (chosen by the user)
+*/
+
+function AddBackgroundImage(background_image) {
+    document.getElementById("background").style.backgroundImage = "url(" + background_image + ")";
+}  
 
 /*
   Everything below this code is coded for image Modals
