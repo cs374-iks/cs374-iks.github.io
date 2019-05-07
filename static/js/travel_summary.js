@@ -21,7 +21,6 @@ let QuestCompleted = [
         quest_provider_picture: "./static/images/people1.jpg",
         place_name: "Statue of Liberty, New York",
         country_name: "United States America",
-        quest_id: "QuestCompleted1"
     },
     {
         url: "./static/img/img2.jpg",
@@ -32,7 +31,6 @@ let QuestCompleted = [
         quest_provider_picture: "./static/images/people2.jpg",
         place_name: "Empire State Building, New York",
         country_name: "United States America",
-        quest_id: "QuestCompleted2"
     },
     {
         url: "./static/img/img3.jpg",
@@ -43,7 +41,6 @@ let QuestCompleted = [
         quest_provider_picture: "./static/images/people3.jpg",
         place_name: "Times Square, New York",
         country_name: "United States America",
-        quest_id: "QuestCompleted3"
     },
     {
         url: "./static/img/img5.jpg",
@@ -54,7 +51,6 @@ let QuestCompleted = [
         quest_provider_picture: "./static/images/people3.jpg",
         place_name: "Somewhere around New York",
         country_name: "United States America",
-        quest_id: "QuestCompleted4"
     },
     {
         url: "./static/img/img6.jpg",
@@ -65,7 +61,6 @@ let QuestCompleted = [
         quest_provider_picture: "./static/images/people3.jpg",
         place_name: "Hollywood",
         country_name: "United States America",
-        quest_id: "QuestCompleted5"
     },
     {
         url: "./static/img/img7.jpeg",
@@ -76,7 +71,6 @@ let QuestCompleted = [
         quest_provider_picture: "./static/images/people3.jpg",
         place_name: "Hollywood",
         country_name: "United States America",
-        quest_id: "QuestCompleted6"
     },
     {
         url: "./static/img/img8.jpg",
@@ -87,8 +81,8 @@ let QuestCompleted = [
         quest_provider_picture: "./static/images/people3.jpg",
         place_name: "New York City",
         country_name: "United States America",
-        quest_id: "QuestCompleted7"
-    }
+    },
+    
 ];
 
 let profile_image = document.getElementById("user_profile_image");
@@ -135,7 +129,7 @@ function bindEvents() {
     fillContent(quests_completed, currentTravelStatus[0].quests_completed);
     fillContent(gained_points, currentTravelStatus[0].gained_points);
     AddImageContent();
-    AddBackgroundImage(currentTravelStatus.background_image);
+    AddBackgroundImage(currentTravelStatus[0].background_image);
 }
 
 function AddImageContent() {
@@ -192,7 +186,7 @@ function AddRows(img1, img2, img3) {
 
     fillPhotoImage(cell1, QuestCompleted[img1].url, QuestCompleted[img1].imgID);
     if (img2 == "..") {
-        cell2.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+        cell2.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
         //fillPhotoImage(cell2, "./static/img/transparent_background.png", "blank");
     } else {
         cell2.style.paddingBottom = "30px";
@@ -200,7 +194,7 @@ function AddRows(img1, img2, img3) {
     }
 
     if (img3 == "..") {
-        cell3.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+        cell3.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
         //fillPhotoImage(cell3, "./static/img/transparent_background.png", "blank");
     } else {
         cell3.style.paddingBottom = "30px";
@@ -236,14 +230,6 @@ function flicker(){
 */
 
 function AddBackgroundImage(background_image) {
-    document.getElementById("background").style.backgroundImage = "url(" + background_image + ")";
+    imageURL = "url(" + background_image + ")";
+    document.getElementById("background").style.backgroundImage = imageURL;
 }  
-
-/*
-  Everything below this code is coded for image Modals
-*/
-  function createModal(imgID, modalID) {
-    $(imgID).click(function(){
-        $(modalID).modal();
-      });
-  };
