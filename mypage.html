@@ -14,7 +14,7 @@
 
   <body>
     <div class="wrapper">
-      <nav class="navbar navbar-expand-md navbar-dark bg-secondary">
+      <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #9e8cd3;">
         <button class="navbar-toggler" type="button" id="sidebarCollapse" data-toggle="collapse" data-target="" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -67,7 +67,6 @@
         </ul>
       </nav>
       <div id="content">
-        <!-- Banner -->
         <div class="hero-image">
           <div class="hero-text">
             <img src="static/img/user_profile_img.jpg" class="border rounded-circle" alt="" width="200" height="200">
@@ -75,6 +74,25 @@
             <br/>
           </div>
         </div>
+        <div class="container-fluid p-3 mb-2 bg-light text-black" style = "text-align: center;">
+          <div class="row">
+            <div class="col-sm" style="padding-right:20px; border-right: 1px solid #ccc; border-bottom: 1px solid #ccc; padding-top: 10px;">
+              <p style="font-size: 24px;color: black">countries<br>visited</p>
+              <p style="font-size: 70px;color: black" id="countries_visited">10</p>
+            </div>
+            <div class="col-sm" style="padding-right:20px; border-right: 1px solid #ccc; border-bottom: 1px solid #ccc; padding-top: 10px;">
+              <p style="font-size: 24px;color: black">quests<br>completed</p>
+              <p style="font-size: 70px;color: black" id="quests_completed">35</p>
+              <br>
+            </div>
+            <div class="col-sm" style="padding-right:20px; border-right: 1px solid #ccc; border-bottom: 1px solid #ccc; padding-top: 10px;">
+              <p style="font-size: 24px;color: black">total<br>points</p>
+              <p style="font-size: 70px; color: black" id="total_points">1200</p>
+              <br>
+            </div>
+          </div>
+        </div>
+        <hr>
       </div>
       <div class="overlay"></div>
     <div>
