@@ -10,7 +10,7 @@ let currentTravelStatus = [
         gained_points: "180",
     }
 ]
-
+let QuestCompletedFromDataBase;
 let QuestCompleted = [
     {
         url: "./static/img/img1.jpg",
@@ -252,3 +252,21 @@ function AddBackgroundImage(background_image) {
 function openModal() {
     $("#exampleModal").modal("toggle");
 }
+
+function readFromDatabase() {
+    return firebase.database().ref().on('value', function(snapshot) {
+        // initializeTable();
+
+        var myValue = snapshot.val();
+        let diary_from_db = myValue.Diary;
+        for (var key in diary_from_db){
+            QuestCompletedFromDataBase.push(diary_from_db[key]);
+        }
+
+
+
+        
+
+    });
+}
+readFromDatabase();
