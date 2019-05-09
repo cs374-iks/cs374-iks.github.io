@@ -98,6 +98,7 @@ let table = document.getElementById("photo_section");
 let image1 = document.getElementById("image1");
 let image2 = document.getElementById("image2");
 let image3 = document.getElementById("image3");
+let myModal = document.getElementById("exampleModal");
 
 function fillContent(divObj, content) {
     divObj.innerHTML = content;
@@ -118,6 +119,8 @@ function fillPhotoImage(divObj, img, imgID) {
     createImage.id = imgID;
     createImage.height = "350";
     createImage.width = "350";
+
+
     divObj.appendChild(createImage);
 }
 
@@ -133,43 +136,38 @@ function bindEvents() {
 }
 
 function AddImageContent() {
-    fillPhotoImage(image1, QuestCompleted[0].url, QuestCompleted[0].imgID);
-    fillPhotoImage(image2, QuestCompleted[1].url, QuestCompleted[1].imgID);
-    fillPhotoImage(image3, QuestCompleted[2].url, QuestCompleted[2].imgID);
 
     let numQuests = QuestCompleted.length;
-    if (numQuests > 3) {
-        let numRow = Math.floor(numQuests / 3);
-        let numCell= numQuests % 3;
+    let numRow = Math.floor(numQuests / 3);
+    let numCell= numQuests % 3;
 
-        let countRow = 1;
-        while (countRow < numRow) {
-            let countCell = 0;
-            let img1 = countRow * 3 + countCell;
-            let img2 = countRow * 3 + countCell + 1;
-            let img3 = countRow * 3 + countCell + 2;
-            AddRows(img1, img2, img3);
-            countRow += 1;
-        }
-        
+    let countRow = 0;
+    while (countRow < numRow) {
         let countCell = 0;
-        if (numCell == 1) {
-            let lastImg1 = countRow * 3 + countCell;
-            let lastImg2 = "..";
-            let lastImg3 = "..";
-            AddRows(lastImg1, lastImg2, lastImg3);
+        let img1 = countRow * 3 + countCell;
+        let img2 = countRow * 3 + countCell + 1;
+        let img3 = countRow * 3 + countCell + 2;
+        AddRows(img1, img2, img3);
+        countRow += 1;
+    }
+        
+    let countCell = 0;
+    if (numCell == 1) {
+        let lastImg1 = countRow * 3 + countCell;
+        let lastImg2 = "..";
+        let lastImg3 = "..";
+        AddRows(lastImg1, lastImg2, lastImg3);
 
-        } if (numCell == 2) {
-            let lastImg1 = countRow * 3 + countCell;
-            let lastImg2 = countRow * 3 + countCell + 1;
-            let lastImg3 = "..";
-            AddRows(lastImg1, lastImg2, lastImg3);
-        } if (numCell == 0) {
-            let lastImg1 = countRow * 3 + countCell;
-            let lastImg2 = countRow * 3 + countCell + 1;
-            let lastImg3 = countRow * 3 + countCell + 2;
-            AddRows(lastImg1, lastImg2, lastImg3);
-        }
+    } if (numCell == 2) {
+        let lastImg1 = countRow * 3 + countCell;
+        let lastImg2 = countRow * 3 + countCell + 1;
+        let lastImg3 = "..";
+        AddRows(lastImg1, lastImg2, lastImg3);
+    } if (numCell == 0) {
+        let lastImg1 = countRow * 3 + countCell;
+        let lastImg2 = countRow * 3 + countCell + 1;
+        let lastImg3 = countRow * 3 + countCell + 2;
+        AddRows(lastImg1, lastImg2, lastImg3);
     }
 }
 
@@ -183,22 +181,39 @@ function AddRows(img1, img2, img3) {
     cell1.style.paddingBottom = "30px";
     cell2.className = "col-sm-auto";
     cell3.className = "col-sm-auto";
+    
+    
+    //let image_id = "#" + imgID;
+    cell1.addEventListener("click", openModal);
+
 
     fillPhotoImage(cell1, QuestCompleted[img1].url, QuestCompleted[img1].imgID);
     if (img2 == "..") {
         cell2.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-        //fillPhotoImage(cell2, "./static/img/transparent_background.png", "blank");
     } else {
         cell2.style.paddingBottom = "30px";
         fillPhotoImage(cell2, QuestCompleted[img2].url, QuestCompleted[img2].imgID);
+        cell2.addEventListener("click", function(){
+            document.getElementById("modal-body").innerHTML = "";
+            document.getElementById("diary").innerHTML = "";
+            let createImg = document.createElement("img");
+            createImg.src = QuestCompleted[img2].url;
+            createImg.height = "350";
+            createImg.width = "350";
+            let modalBody = document.getElementById("modal-body")
+            modalBody.appendChild(createImg);
+            let diaryText = document.getElementById("diary");
+            diaryText.innerHTML = QuestCompleted[img2].diary;
+            $("#exampleModal").modal("toggle");
+        });
     }
 
     if (img3 == "..") {
         cell3.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-        //fillPhotoImage(cell3, "./static/img/transparent_background.png", "blank");
     } else {
         cell3.style.paddingBottom = "30px";
         fillPhotoImage(cell3, QuestCompleted[img3].url, QuestCompleted[img3].imgID);
+        cell3.addEventListener("click", openModal);
     }
 
     createRow.appendChild(cell1);
@@ -233,3 +248,7 @@ function AddBackgroundImage(background_image) {
     imageURL = "url(" + background_image + ")";
     document.getElementById("background").style.backgroundImage = imageURL;
 }  
+
+function openModal() {
+    $("#exampleModal").modal("toggle");
+}
