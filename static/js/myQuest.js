@@ -114,7 +114,7 @@ function addAllContentsToTable() {
             col1.innerHTML = `<img src=${current_quest[i].profile_img} width = 50em height = 50em alt="donald trump" data-target = "#modal_profile" data-toggle = "modal" role = 'button' onclick="clickProfile()" > `;
 
             col2.innerHTML =`<div class = "img_container">
-                                <img src = "./static/img/medal.png" width = 50em height = 50 em>
+                                <img src = "./static/img/medal.png" width = 50em height = 50 em title = "Amount of point if you accomplish your goal">
                                 <div class = "centered">${current_quest[i].point}</div>
     
                             </div>
@@ -123,7 +123,9 @@ function addAllContentsToTable() {
 
             col3.innerHTML = `${current_quest[i].quest_content}`;
 
-            col4.innerHTML = `<img src=${current_quest[i].place_img} width = 50em height = 50em alt="donald trump" data-target = "#modal_map" data-toggle = "modal" role = 'button' onclick="updateGoogleMap('${current_quest[i].place_name}')">`
+            col4.innerHTML = `<img src=${current_quest[i].place_img} width = 50em height = 50em alt="donald trump" data-target = "#modal_map" data-toggle = "modal" role = 'button' onclick="updateGoogleMap('${current_quest[i].place_name}')"
+                            title = "click to see the location of this place "
+                            >`
 
 
             col5.innerHTML =
@@ -133,8 +135,8 @@ function addAllContentsToTable() {
             col1.innerHTML = `<img src=${current_quest[i].profile_img} width = 50em height = 50em alt="donald trump" data-target = "#modal_profile" data-toggle = "modal" role = 'button' onclick="clickProfile()" > `;
 
             col2.innerHTML =`<div class = "img_container">
-                                <img src = "./static/img/medal.png" width = 50em height = 50 em>
-                                <div class = "centered">${current_quest[i].point}</div>
+                                <img src = "./static/img/medal.png" width = 50em height = 50 em title = "Amount of point if you accomplish your goal">
+                                <div class = "centered">${current_quest[i].point}</div> 
     
                             </div>
                                 
@@ -142,7 +144,9 @@ function addAllContentsToTable() {
 
             col3.innerHTML = `${current_quest[i].quest_content}`;
 
-            col4.innerHTML = `<img src=${current_quest[i].place_img} width = 50em height = 50em alt="donald trump" data-target = "#modal_map" data-toggle = "modal" role = 'button' onclick="updateGoogleMap('${current_quest[i].place_name}')">`
+            col4.innerHTML = `<img src=${current_quest[i].place_img} width = 50em height = 50em alt="donald trump" data-target = "#modal_map" data-toggle = "modal" role = 'button' onclick="updateGoogleMap('${current_quest[i].place_name}')"
+                                    title = "click to see the location of this place "
+                                    >`
 
 
             col5.innerHTML =
@@ -208,7 +212,7 @@ function clickProfile(){ //function when click profile image
         let alreadyAdded = false;
 
         col1.innerHTML = `<div class = "img_container">
-                                <img src = "./static/img/medal.png" width = 50em height = 50 em>
+                                <img src = "./static/img/medal.png" width = 50em height = 50 em title = "Amount of point if you accomplish your goal">
                                 <div class = "centered">${profile[i].point}</div>
     
                             </div>`
