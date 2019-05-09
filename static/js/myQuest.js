@@ -89,7 +89,7 @@ function readFromDatabase() {
         // initializeTable();
 
         var myValue = snapshot.val();
-        current_quest = myValue.Quests;
+        current_quest    = myValue.Quests;
 
 
         console.log(myValue);
