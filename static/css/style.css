@@ -179,3 +179,10 @@ ul ul a {
     text-align: center;
     vertical-align: middle;
 }
+
+.guide-text {
+    font-size: 1.0em;
+    font-weight: 300;
+    line-height: 1.5em;
+    color: #999;
+}
