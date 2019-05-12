@@ -13,6 +13,7 @@
  *  */
 
 var guides = []; // guides represented as their ids
+var quests = [];
 var carousel_images_count = [3, 3, 2, 2];
 
 var searchButton = document.getElementById("searchButton");
@@ -26,6 +27,7 @@ var subtitle = document.getElementById("subtitle");
 $( document ).ready(function() {
     function init() {
         initGuideList();
+        initQuestList();
         viewGuideList();
         bindEvents();
     }
@@ -35,6 +37,13 @@ $( document ).ready(function() {
      *  */
     function initGuideList() {
         guides = [0, 1, 2, 3];
+    }
+
+    function initQuestList() {
+        var questNum = 10;
+        for (var i=0; i<questNum; i++) {
+            quests.push(null);
+        }
     }
     
     /**
@@ -81,9 +90,14 @@ $( document ).ready(function() {
         button.onclick = function() {
             onClickDeleteQuest(this, quest_id);
         };
-
-        firebase.database().ref('/Quests/Quests/').once('value').then(function(snapshot) {
-            
+        firebase.database().ref(`/Quests/Quests/${quest_id}`).set({
+            place_img : quests[quest_id].place_img,
+            place_name : quests[quest_id].place_name,
+            point: quests[quest_id].point,
+            profile_id : quests[quest_id].profile_id,
+            quest_content : quests[quest_id].quest_content,
+            quest_id : quests[quest_id].quest_id,
+            quest_status : quests[quest_id].quest_status
         });
     }
     
@@ -94,9 +108,7 @@ $( document ).ready(function() {
             onClickAddQuest(this, quest_id);
         };
 
-        firebase.database().ref('/Quests/Quests/').once('value').then(function(snapshot) {
-            
-        });
+        firebase.database().ref(`/Quests/Quests/${quest_id}`).remove();
     }
     
     /**
@@ -124,7 +136,7 @@ $( document ).ready(function() {
             var name = guideSnapshot.val().name;
             var city = guideSnapshot.val().city;
             var profile_text = guideSnapshot.val().profile_text;
-            var quests = guideSnapshot.val().quests;
+            var guideQuests = guideSnapshot.val().quests;
             var userQuests = questsSnapshot.val();
 
             // carousel indicators 
@@ -147,14 +159,15 @@ $( document ).ready(function() {
             }
             // quests
             var quests_inner = ``;
-            for (var i=0; i<quests.length; i++) {
+            for (var i=0; i<guideQuests.length; i++) {
+                quests[guideQuests[i].quest_id] = guideQuests[i];
                 // WARNING: need to handle add quest initially being green
                 quests_inner += 
                 `<div class='row mt-3'> 
                     <div class='col-8'> 
-                        <li>${quests[i].quest_content}</li> 
+                        <li>${guideQuests[i].quest_content}</li> 
                     </div> 
-                    <div class='col-4' id='addQuestButton${quests[i].quest_id}'> 
+                    <div class='col-4' id='addQuestButton${guideQuests[i].quest_id}'> 
                     </div> 
                 </div>`;
             }
@@ -203,12 +216,15 @@ $( document ).ready(function() {
             </div>`;
 
             // addQuest button
-            for (var i=0; i<quests.length; i++) {
-                var added = false;
-                let quest_id = quests[i].quest_id;
-                var button;
-                var div;
+            for (var i=0; i<guideQuests.length; i++) {
+                let added = false;
+                let quest_id = guideQuests[i].quest_id;
+                let button;
+                let div;
                 for (var j=0; j<userQuests.length; j++) {
+                    if (userQuests[j] == null) {
+                        continue;
+                    }
                     if (quest_id == userQuests[j].quest_id) {
                         added = true;
                     }
@@ -218,7 +234,7 @@ $( document ).ready(function() {
                     button.className = 'btn btn-success btn-sm btn-block float-right';
                     button.type = 'button';
                     button.innerHTML = 'Added';
-
+                    
                     button.onclick = function() {
                         onClickDeleteQuest(this, quest_id);
                     };
@@ -234,7 +250,7 @@ $( document ).ready(function() {
                     button.onclick = function() {
                         onClickAddQuest(this, quest_id);
                     };
-                    
+
                     div = document.getElementById(`addQuestButton${quest_id}`);
                     div.appendChild(button);
                 }
