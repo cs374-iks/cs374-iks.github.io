@@ -221,7 +221,7 @@ $( document ).ready(function() {
                 let quest_id = guideQuests[i].quest_id;
                 let button;
                 let div;
-                for (var j=0; j<userQuests.length; j++) {
+                for (var j=0; userQuests && j<userQuests.length; j++) {
                     if (userQuests[j] == null) {
                         continue;
                     }
