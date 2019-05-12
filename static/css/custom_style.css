@@ -1,4 +1,26 @@
-th, td {
-    padding: 0;
+.table tbody td{
+    padding: 0.2rem;
+}
+
+.centered {
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Modak', cursive;
+    color: black;
+
+}
+
+.img_container {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.img_container
+
+.title{
+    color:red;
 }
 

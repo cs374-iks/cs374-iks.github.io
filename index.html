@@ -15,7 +15,7 @@
 
   <body>
     <div class="wrapper">
-      <nav class="navbar navbar-expand-md navbar-dark bg-secondary">
+      <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #9e8cd3;">
         <button class="navbar-toggler" type="button" id="sidebarCollapse" data-toggle="collapse" data-target="" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -29,7 +29,7 @@
         <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Find Guide & Quest<span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="/FindGuideQuest.html">Find Guide & Quest<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
               <a class="nav-link" href="#">My Quest<span class="sr-only">(current)</span></a>
@@ -54,7 +54,7 @@
 
         <ul class="list-unstyled components">
           <li>
-            <a href="#">Find Guide & Quests</a>
+            <a href="/FindGuideQuest.html">Find Guide & Quests</a>
           </li>
           <li>
             <a href="#">My Quests</a>
@@ -67,22 +67,15 @@
           </li>
         </ul>
       </nav>
-      <div id="content" style = "background-image: url('static/img/img4-copy2.jpg'); height: 700px">
-        <div class = "container-fluid" style = "text-align: center;">
-            <div class = "row">
-                <div class = "col-sm" id = "element" style = "color: white; font-size: 48px; font-family: 'Archivo Black', sans-serif;">
-                    <br>
-                    IKS
-                    <br>Trip Made Fun
-                </div>
-            </div>
-            <br><br><br><br><br><br><br>
-            <br><br><br><br><br><br><br>
-            <div class = "row">
-                <div class = "col-sm">
-                    <button class = "btn btn-success" style = "height: 100px; width: 350px; font-size:36px; border-radius: 12px">START HERE</button>
-                </div>
-            </div>
+      <div class="content">
+        <!-- Banner -->
+        <div class="hero-image">
+          <div class="hero-text">
+            <h1 style="font-size:35px">Make Travel Great Again!</h1>
+            <p>Let's make a memoriable trip with quests!</p>
+            <br/>
+            <button onclick='location.href="https://cs374-iks.github.io/FindGuideQuest.html"'>Start Here</button>
+          </div>
         </div>
       </div>
       <div class="overlay"></div>
@@ -90,7 +83,7 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-   <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
