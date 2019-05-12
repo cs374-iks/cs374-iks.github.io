@@ -86,10 +86,11 @@
               Where do you wanna go?    
             </h2>  
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search for a city ...">
+              <label for="searchInput"></label>
+              <input type="text" class="form-control" id="searchInput" placeholder="Search for city or country ...">
               <div class="input-group-append">
                 <span class="input-group-btn">
-                  <a role="button" class="btn btn-secondary" href="./FindGuideQuestResult.html" id="search">
+                  <a role="button" class="btn btn-secondary" id="searchButton">
                     <i class="fa fa-search"></i> GO!
                   </a>
                 </span>
@@ -101,7 +102,7 @@
         <!-- Meet Top rated Local Experts! -->
         <div class="position-relative overflow-hidden text-center pt-4">
           <div class="mx-auto">
-            <h2 class="display-5 font-weight-normal">
+            <h2 class="display-6 font-weight-normal" id="subtitle">
               Meet Top-Rated Local Guides!
             </h2>
           </div>
