@@ -3,16 +3,32 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="static/css/custom_style.css">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="static/css/style.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-    <link rel="stylesheet" href="static/css/custom_style.css">
+
 
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy|Pacifico|Pragati+Narrow" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy|Pacifico|Pragati+Narrow|Modak" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        // TODO: Replace with your project's customized code snippet
+        var config = {
+            apiKey: "AIzaSyBIgcf6w3mkZp-xPSgNLRINDawRiFysKR4",
+            authDomain: "fir-test-ded6e.firebaseapp.com",
+            databaseURL: "https://fir-test-ded6e.firebaseio.com",
+            projectId: "fir-test-ded6e",
+            storageBucket: "fir-test-ded6e.appspot.com",
+            messagingSenderId: "418674999387",
+            appId: "1:418674999387:web:6a3810e3dd528868"
+        };
+        firebase.initializeApp(config);
+    </script>
 </head>
 
 <body>
@@ -155,19 +171,29 @@
         <div class = "modal-dialog">
             <div class="modal-content">
                 <div class = "modal-header">
-                    upload your photo!
+                    upload your story!
                     <button class = "close" data-dismiss = "modal">&times;</button>
                 </div>
                 <div class = "modal-body" style = "text-align : center">
-                    <form id="form1" action="" method="post" enctype="multipart/form-data" target="repacatFrame">
-                        <input type="file" name="file">
-                        <!--<input type="submit">-->
-                    </form>
-                    <form action="">
-                        <textarea name="upload_quest_story" id="" cols="30" rows="10" placeholder="write your story!"></textarea>
-                        <!--<input type="submit">-->
-                    </form>
-                    <button id = "submit_quest_button" data-dismiss = "modal">Yay! I want upload it!</button>
+                    <!--<form id="form1" action="" method="post" enctype="multipart/form-data" target="repacatFrame">-->
+                        <!--<input type="file" name="file">-->
+                        <!--&lt;!&ndash;<input type="submit">&ndash;&gt;-->
+                    <!--</form>-->
+                    <!--<form action="">-->
+                        <!--<textarea name="upload_quest_story" id="" cols="30" rows="10" placeholder="write your story!"></textarea>-->
+                        <!--&lt;!&ndash;<input type="submit">&ndash;&gt;-->
+                    <!--</form>-->
+                    <!--<button id = "submit_quest_button" data-dismiss = "modal">Yay! I want upload it!</button>-->
+                    <label class = "upload-group">
+                        <textarea id = "imageCaption" placeholder="write your story!" cols = "50" rows = "10" ></textarea>
+                        <br>
+                        <input type = "file" id = "file">
+
+
+                    </label>
+                    <br>
+                    <button class = "btn btn-primary" id = "upload_button" onclick = "" data-dismiss = "modal">Submit</button>
+
                 </div>
             </div>
         </div>
