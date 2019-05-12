@@ -14,6 +14,7 @@
 
 var guides = []; // guides represented as their ids
 var quests = [];
+var questNum = 10;
 var carousel_images_count = [3, 3, 2, 2];
 
 var searchButton = document.getElementById("searchButton");
@@ -40,7 +41,6 @@ $( document ).ready(function() {
     }
 
     function initQuestList() {
-        var questNum = 10;
         for (var i=0; i<questNum; i++) {
             quests.push(null);
         }
@@ -216,7 +216,7 @@ $( document ).ready(function() {
             </div>`;
 
             // addQuest button
-            for (var i=0; i<quests.length; i++) {
+            for (var i=0; i<questNum; i++) {
                 let added = false;
                 let quest_id = quests[i].quest_id;
                 let button;
