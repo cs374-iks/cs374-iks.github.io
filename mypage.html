@@ -10,6 +10,9 @@
 
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
+    <script src="static/js/db_conn.js"></script>
   </head>
 
   <body>
@@ -87,7 +90,7 @@
             </div>
             <div class="col-sm" style="padding-right:20px; border-right: 1px solid #ccc; border-bottom: 1px solid #ccc; padding-top: 10px;">
               <p style="font-size: 24px;color: black">total<br>points</p>
-              <p style="font-size: 70px; color: black" id="total_points">1200</p>
+              <p style="font-size: 70px; color: black" id="total_points"></p>
               <br>
             </div>
           </div>
@@ -126,6 +129,22 @@
         });
     });
     </script>
- 
+     <script>
+      $( document ).ready(function(){
+        firebase.database().ref("/Diary/").once('value', function(snapshot) {
+          let v = snapshot.val();
+          var score = 0;
+          var country = new Set();
+          for(var key in v){
+            let t = v[key];
+            score += t.point;
+            country.add(t.country_name);
+          }
+          $("#total_points").html(score);
+          $("#countries_visited").html(country.size);
+          $("#quests_completed").html(Object.keys(v).length);
+        });
+      });
+    </script>
   </body>
 </html>

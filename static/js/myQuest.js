@@ -31,7 +31,7 @@ let current_quest = [
     }
 ];
 
-
+let profile_temp = [];
 let profile= [
     {
 
@@ -98,6 +98,21 @@ function readFromDatabase() {
     });
 }
 
+function readFromDatabase_profile() {
+    return firebase.database().ref('/Guides/').on('value', function(snapshot) {
+        // initializeTable();
+
+        var myValue = snapshot.val();
+        profile = myValue;
+
+
+        console.log(myValue);
+
+
+    });
+}
+
+
 function addAllContentsToTable() {
     for (let i = 0; i < current_quest.length; i++) {
         let row = quest_table.insertRow(quest_table.rows.length);
@@ -109,12 +124,21 @@ function addAllContentsToTable() {
         let col4 = row.insertCell(3);
         let col5 = row.insertCell(4);
 
+        let quest_provider;
+
+        for (let j = 0 ; j < profile.length; j ++ ){
+            if (profile[j].id == current_quest[i].profile_id){
+                quest_provider = profile[j]
+
+            }
+        }
+
 
         if (current_quest[i].quest_status) { //when quest is completed
-            col1.innerHTML = `<img src=${current_quest[i].profile_img} width = 50em height = 50em alt="donald trump" data-target = "#modal_profile" data-toggle = "modal" role = 'button' onclick="clickProfile()" > `;
+            col1.innerHTML = `<img src="./static/img/${quest_provider.name}_profile.png" width = 50em height = 50em alt="donald trump" data-target = "#modal_profile" data-toggle = "modal" role = 'button' onclick="clickProfile('${current_quest[i].profile_id}')" > `;
 
             col2.innerHTML =`<div class = "img_container">
-                                <img src = "./static/img/medal.png" width = 50em height = 50 em>
+                                <img src = "./static/img/medal.png" width = 50em height = 50 em title = "Amount of point if you accomplish your goal">
                                 <div class = "centered">${current_quest[i].point}</div>
     
                             </div>
@@ -123,18 +147,20 @@ function addAllContentsToTable() {
 
             col3.innerHTML = `${current_quest[i].quest_content}`;
 
-            col4.innerHTML = `<img src=${current_quest[i].place_img} width = 50em height = 50em alt="donald trump" data-target = "#modal_map" data-toggle = "modal" role = 'button' onclick="updateGoogleMap('${current_quest[i].place_name}')">`
+            col4.innerHTML = `<img src=${current_quest[i].place_img} width = 50em height = 50em alt="donald trump" data-target = "#modal_map" data-toggle = "modal" role = 'button' onclick="updateGoogleMap('${current_quest[i].place_name}')"
+                            title = "click to see the location of this place "
+                            >`
 
 
             col5.innerHTML =
                 `quest complete!`
 
         } else { //when quest is not completed
-            col1.innerHTML = `<img src=${current_quest[i].profile_img} width = 50em height = 50em alt="donald trump" data-target = "#modal_profile" data-toggle = "modal" role = 'button' onclick="clickProfile()" > `;
+            col1.innerHTML = `<img src="./static/img/${quest_provider.name}_profile.png"} width = 50em height = 50em alt="donald trump" data-target = "#modal_profile" data-toggle = "modal" role = 'button' onclick="clickProfile('${current_quest[i].profile_id}')" > `;
 
             col2.innerHTML =`<div class = "img_container">
-                                <img src = "./static/img/medal.png" width = 50em height = 50 em>
-                                <div class = "centered">${current_quest[i].point}</div>
+                                <img src = "./static/img/medal.png" width = 50em height = 50 em title = "Amount of point if you accomplish your goal">
+                                <div class = "centered">${current_quest[i].point}</div> 
     
                             </div>
                                 
@@ -142,7 +168,9 @@ function addAllContentsToTable() {
 
             col3.innerHTML = `${current_quest[i].quest_content}`;
 
-            col4.innerHTML = `<img src=${current_quest[i].place_img} width = 50em height = 50em alt="donald trump" data-target = "#modal_map" data-toggle = "modal" role = 'button' onclick="updateGoogleMap('${current_quest[i].place_name}')">`
+            col4.innerHTML = `<img src=${current_quest[i].place_img} width = 50em height = 50em alt="donald trump" data-target = "#modal_map" data-toggle = "modal" role = 'button' onclick="updateGoogleMap('${current_quest[i].place_name}')"
+                                    title = "click to see the location of this place "
+                                    >`
 
 
             col5.innerHTML =
@@ -182,22 +210,31 @@ function removeById(id){//function when 'Quit quest'
 }
 
 
-function clickProfile(){ //function when click profile image
+function clickProfile(profile_id){ //function when click profile image
 
     let numRow = profile_quest_table.rows.length;
+    let quest_provider;
+    let quests_provided_by_provider;
 
-    profile_instruction.innerHTML = `<img src="${profile[0].quest_provider_picture}" class="mr-3" style="height:128px; width:128px; overflow:hidden;">
+    for (let i = 0 ; i < profile.length; i ++ ){
+        if (profile[i].id == profile_id){
+            quest_provider = profile[i]
+            quests_provided_by_provider = quest_provider.quests;
+        }
+    }
+
+    profile_instruction.innerHTML = `<img src="./static/img/${quest_provider.name}_profile.png" class="mr-3" style="height:128px; width:128px; overflow:hidden;">
                     <div class="media-body">
                       <h6 class="mt-0">
-                        ${profile[0].quest_provider_name}
+                        ${quest_provider.name}
                       </h6>
-                      <p>${profile[0].quest_provider_introduction}</p>
+                      <p>${quest_provider.profile_text}</p>
                     </div>`
 
     for (let i = 0; i < numRow ; i++){
         profile_quest_table.deleteRow(0);
     }
-    for (let i = 1; i < profile.length; i ++){
+    for (let i = 0; i < quests_provided_by_provider.length; i ++){
         console.log(i)
         let row = profile_quest_table.insertRow(profile_quest_table.rows.length);
         let col1 = row.insertCell(0);
@@ -208,27 +245,27 @@ function clickProfile(){ //function when click profile image
         let alreadyAdded = false;
 
         col1.innerHTML = `<div class = "img_container">
-                                <img src = "./static/img/medal.png" width = 50em height = 50 em>
-                                <div class = "centered">${profile[i].point}</div>
+                                <img src = "./static/img/medal.png" width = 50em height = 50 em title = "Amount of point if you accomplish your goal">
+                                <div class = "centered">${quests_provided_by_provider[i].point}</div>
     
                             </div>`
 
-        col2.innerHTML = `${profile[i].quest_content}`;
+        col2.innerHTML = `${quests_provided_by_provider[i].quest_content}`;
 
-        col3.innerHTML = `<img src=${profile[i].place_img} width = 70em height = 70em alt="donald trump">`
+        col3.innerHTML = `<img src=${quests_provided_by_provider[i].place_img} width = 70em height = 70em alt="donald trump">`
 
         //col4.innerHTML = `<a data-target = "#modal_map" data-toggle = "modal" role = 'button' onclick=`+"updateGoogleMap(${profile[i].place_name});>press here </a>"
 
         for (let j = 0; j < current_quest.length ; j ++){
-            if (profile[i].quest_id == current_quest[j].quest_id){
+            if (quests_provided_by_provider[i].quest_id == current_quest[j].quest_id){
                 alreadyAdded = true;
             }
         }
         if (alreadyAdded){
-            col4.innerHTML = `<button id="button_${profile[i].quest_id}" class = 'btn btn-outline-warning' onclick = addThisQuest('${profile[i].quest_id}') disabled = true style = 'font-size:10px'>Already Added</button>`
+            col4.innerHTML = `<button id="button_${quests_provided_by_provider[i].quest_id}" class = 'btn btn-outline-warning' onclick = addThisQuest('${quests_provided_by_provider[i].quest_id}') disabled = true style = 'font-size:10px'>Already Added</button>`
         }
         else{
-            col4.innerHTML = `<button id="button_${profile[i].quest_id}" class = 'btn btn-outline-primary' onclick = addThisQuest('${profile[i].quest_id}') style = 'font-size:10px'>Add Quest</button>`
+            col4.innerHTML = `<button id="button_${quests_provided_by_provider[i].quest_id}" class = 'btn btn-outline-primary' onclick = addThisQuest('${quests_provided_by_provider[i].quest_id}') style = 'font-size:10px'>Add Quest</button>`
         }
 
 
@@ -240,23 +277,24 @@ function clickProfile(){ //function when click profile image
 }
 
 function addThisQuest(id){
-    for (let i = 1; i < profile.length; i++){
-        if (profile[i].quest_id ==id){
-            current_quest.push(profile[i])
-            let disable_button = document.getElementById(`button_${profile[i].quest_id}`);
-            disable_button.disabled = true;
-            disable_button.class = 'btn btn-outline-warning';
-            disable_button.innerHTML = "Already Added"
+
+    for (let i =0 ; i < profile.length; i ++){
+        for (let j = 0 ; j< profile[i].quests.length; j ++){
+            if (profile[i].quests[j].quest_id == id) {
+                current_quest.push(profile[i].quests[j])
+                let disable_button = document.getElementById(`button_${profile[i].quests[j].quest_id}`);
+                disable_button.disabled = true;
+                disable_button.class = 'btn btn-outline-warning';
+                disable_button.innerHTML = "Already Added";
 
 
 
-            var newKey = firebase.database().ref('/Quests');
-            newKey.set({
-                Quests:current_quest
-            });
-
+                var newKey = firebase.database().ref('/Quests');
+                newKey.set({
+                    Quests:current_quest
+                });
+            }
         }
-
     }
 
     initializeTable();
@@ -300,7 +338,8 @@ function uploadFile(id){
                 quest_provider_name : "Obama",
                 quest_provider_picture: "./static/images/people2.jpg",
                 place_name: "Empire State Building, New York",
-                country_name: "United States America"
+                country_name: "United States America",
+                point : clicking_quest.point
 
 
             }
@@ -324,6 +363,9 @@ function uploadFile(id){
 
 
 }
+
+
 initializeTable();
-//addAllContentsToTable();
+readFromDatabase_profile();
 readFromDatabase();
+
