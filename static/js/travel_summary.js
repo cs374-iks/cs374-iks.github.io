@@ -10,7 +10,7 @@ let currentTravelStatus = [
         gained_points: "180",
     }
 ]
-let QuestCompletedFromDataBase;
+let QuestCompletedFromDataBase = [];
 let QuestCompleted = [
     {
         url: "./static/img/img1.jpg",
@@ -119,6 +119,7 @@ function fillPhotoImage(divObj, img, imgID) {
     createImage.id = imgID;
     createImage.height = "350";
     createImage.width = "350";
+    createImage.style.border = "1px solid black";
 
 
     divObj.appendChild(createImage);
@@ -180,11 +181,24 @@ function AddRows(img1, img2, img3) {
     cell1.className = "col-sm-auto";
     cell1.style.paddingBottom = "30px";
     cell2.className = "col-sm-auto";
+    cell2.style.marginLeft = "45px";
+    cell2.style.marginRight = "45px";
     cell3.className = "col-sm-auto";
     
-    
     //let image_id = "#" + imgID;
-    cell1.addEventListener("click", openModal);
+    cell1.addEventListener("click", function(){
+        document.getElementById("modal-body").innerHTML = "";
+        document.getElementById("diary").innerHTML = "";
+        let createImg = document.createElement("img");
+        createImg.src = QuestCompleted[img1].url;
+        createImg.height = "350";
+        createImg.width = "350";
+        let modalBody = document.getElementById("modal-body")
+        modalBody.appendChild(createImg);
+        let diaryText = document.getElementById("diary");
+        diaryText.innerHTML = QuestCompleted[img1].diary;
+        $("#exampleModal").modal("toggle");
+    });
 
 
     fillPhotoImage(cell1, QuestCompleted[img1].url, QuestCompleted[img1].imgID);
@@ -206,6 +220,22 @@ function AddRows(img1, img2, img3) {
             diaryText.innerHTML = QuestCompleted[img2].diary;
             $("#exampleModal").modal("toggle");
         });
+
+        let viewText2 = document.createElement("p");
+        viewText2.innerHTML = "View Image";
+        viewText2.style.visibility = "hidden";
+        viewText2.style.color = "black";
+        cell2.appendChild(viewText2);
+    
+        cell2.onmouseover = function() {
+            cell2.style.opacity = "0.5";
+            cell2.style.transition = "opacity 1s";
+            viewText2.style.visibility = "visible";
+        }
+        cell2.onmouseleave = function() {
+            cell2.style.opacity = "1";
+            viewText2.style.visibility = "hidden";
+        }
     }
 
     if (img3 == "..") {
@@ -213,7 +243,58 @@ function AddRows(img1, img2, img3) {
     } else {
         cell3.style.paddingBottom = "30px";
         fillPhotoImage(cell3, QuestCompleted[img3].url, QuestCompleted[img3].imgID);
-        cell3.addEventListener("click", openModal);
+        cell3.addEventListener("click", function(){
+            document.getElementById("modal-body").innerHTML = "";
+            document.getElementById("diary").innerHTML = "";
+            let createImg = document.createElement("img");
+            createImg.src = QuestCompleted[img3].url;
+            createImg.height = "350";
+            createImg.width = "350";
+            let modalBody = document.getElementById("modal-body")
+            modalBody.appendChild(createImg);
+            let diaryText = document.getElementById("diary");
+            diaryText.innerHTML = QuestCompleted[img3].diary;
+            $("#exampleModal").modal("toggle");
+        });
+
+
+        let viewText3 = document.createElement("p");
+        viewText3.innerHTML = "View Image";
+        viewText3.style.visibility = "hidden";
+        viewText3.style.color = "black";
+        cell3.appendChild(viewText3);
+
+        cell3.onmouseover = function() {
+            cell3.style.opacity = "0.5";
+            cell3.style.transition = "opacity 1s";
+            viewText3.style.visibility = "visible";
+        }
+        cell3.onmouseleave = function() {
+            cell3.style.opacity = "1";
+            viewText3.style.visibility = "hidden";
+        }
+    
+    }
+
+    let viewText = document.createElement("p");
+    viewText.innerHTML = "View Image";
+    viewText.style.visibility = "hidden";
+    viewText.style.color = "black";
+    cell1.appendChild(viewText);
+
+
+    
+
+
+
+    cell1.onmouseover = function() {
+        cell1.style.opacity = "0.5";
+        cell1.style.transition = "opacity 1s";
+        viewText.style.visibility = "visible";
+    }
+    cell1.onmouseleave = function() {
+        cell1.style.opacity = "1";
+        viewText.style.visibility = "hidden";
     }
 
     createRow.appendChild(cell1);
@@ -249,16 +330,13 @@ function AddBackgroundImage(background_image) {
     document.getElementById("background").style.backgroundImage = imageURL;
 }  
 
-function openModal() {
-    $("#exampleModal").modal("toggle");
-}
-
 function readFromDatabase() {
-    return firebase.database().ref().on('value', function(snapshot) {
+    return firebase.database().ref("/Quests/").on('value', function(snapshot) {
         // initializeTable();
 
         var myValue = snapshot.val();
         let diary_from_db = myValue.Diary;
+        console.log(diary_from_db);
         for (var key in diary_from_db){
             QuestCompletedFromDataBase.push(diary_from_db[key]);
         }
@@ -269,4 +347,3 @@ function readFromDatabase() {
 
     });
 }
-readFromDatabase();

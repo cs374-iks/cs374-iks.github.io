@@ -16,26 +16,6 @@
 
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
-
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-        https://firebase.google.com/docs/web/setup#config-web-app -->
-
-    <script>
-      // Your web app's Firebase configuration
-      var firebaseConfig = {
-        apiKey: "AIzaSyBIgcf6w3mkZp-xPSgNLRINDawRiFysKR4",
-        authDomain: "fir-test-ded6e.firebaseapp.com",
-        databaseURL: "https://fir-test-ded6e.firebaseio.com",
-        projectId: "fir-test-ded6e",
-        storageBucket: "fir-test-ded6e.appspot.com",
-        messagingSenderId: "418674999387",
-        appId: "1:418674999387:web:6a3810e3dd528868"
-      };
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
-    </script>
   </head>
 
   <body>
@@ -112,7 +92,7 @@
             <b style = "font-size: 60px">STATUS</b>
           <div class = "row">
               <div class = "col-sm">
-                  <p style = "font-family: 'Major Mono Display', monospace; font-size: 24px;color: white">countries<br>visited</p>
+                  <p style = "font-family: 'Major Mono Display', monospace; font-size: 24px;color: white;">countries<br>visited</p>
                   <p style = "font-family: 'Baloo Bhaina', cursive; font-size: 108px; color: white" id = "countries_visited"></p>
               </div>
               <div class = "col-sm">
@@ -134,7 +114,7 @@
               </p>
       </div>
       <div class = "container-fluid p-3 mb-2 bg-light text-black" style = "text-align: center; box-shadow: 10px 10px 10px rgb(48, 47, 47); outline: 2px solid black; margin-top: 20px" id = "photo_section">
-          <b style = "margin: 10px 10px 10px 10px; font-size: 60px">PHOTOS</b>
+          <b style = "font-size: 60px; margin: 10px 10px 10px 10px;">PHOTOS</b><br><br>
           <div class = "row justify-content-md-center">
             </div>
           </div>
@@ -147,9 +127,9 @@
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header" style = "background-color: rgb(44, 44, 44)">
           <h5 class="modal-title" id="exampleModalLabel"></h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color:white;">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -193,8 +173,30 @@
             $('.collapse.in').toggleClass('in');
             $('a[aria-expanded=true]').attr('aria-expanded', 'false');
         });
+
+        readFromDatabase();
     });
     </script>
  
   </body>
+      <!-- The core Firebase JS SDK is always required and must be listed first -->
+      <script src="https://www.gstatic.com/firebasejs/6.0.1/firebase-app.js"></script>
+
+      <!-- TODO: Add SDKs for Firebase products that you want to use
+          https://firebase.google.com/docs/web/setup#config-web-app -->
+  
+      <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+          apiKey: "AIzaSyBIgcf6w3mkZp-xPSgNLRINDawRiFysKR4",
+          authDomain: "fir-test-ded6e.firebaseapp.com",
+          databaseURL: "https://fir-test-ded6e.firebaseio.com",
+          projectId: "fir-test-ded6e",
+          storageBucket: "fir-test-ded6e.appspot.com",
+          messagingSenderId: "418674999387",
+          appId: "1:418674999387:web:6a3810e3dd528868"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+      </script>
 </html>
