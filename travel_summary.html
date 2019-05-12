@@ -1,0 +1,155 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/css/style_yosephks.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Bhaina|Indie+Flower|Libre+Franklin|Major+Mono+Display|Ubuntu" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Chewy" rel="stylesheet">
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+      <div class="wrapper">
+        <nav class="navbar navbar-expand-md navbar-dark bg-secondary">
+          <button class="navbar-toggler" type="button" id="sidebarCollapse" data-toggle="collapse" data-target="" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="mx-auto order-0">
+            <ul class="navbar-nav">
+              <li class="nav-item active">
+                <a class="navbar-brand logo-nav" href="/">IKs<span class="sr-only">(current)</span></a>
+              </li>
+            </ul>
+          </div>
+          <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="./FindGuideQuest.html">Find Guide & Quest<span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="./myQuest.html">My Quest<span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="./mypage.html">Mypage<span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="./rank.html">Rank<span class="sr-only">(current)</span></a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+        <nav id="sidebar">
+          <div id="dismiss">
+            <i class="fas fa-arrow-left" style="margin-top: 10px;"></i>
+            <!-- XXX : fix this margin-top-->
+          </div>
+          <div class="sidebar-header">
+            <h3>Menu</h3>
+          </div>
+
+          <ul class="list-unstyled components">
+            <li>
+              <a href="./FindGuideQuest.html">Find Guide & Quests</a>
+            </li>
+            <li>
+              <a href="./myQuest.html">My Quests</a>
+            </li>
+            <li>
+              <a href="./mypage.html">Mypage</a>
+            </li>
+            <li>
+              <a href="./rank.html">Rank</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="content">
+        <div class="p-3 mb-2 bg-danger text-white">
+        <h1 style = "font-family: 'Luckiest Guy', cursive; margin: 10px 10px 10px 10px; text-align: center">CONGRATULATIONS</h1>
+        <p style = "text-align: center; font-size: 72px; color: white; font-family: 'Chewy', cursive;">You have just finished your trip!</p>
+        <p id = "user_profile_image" style = "text-align: center;"></p>
+        <p id = "username" style = "text-align: center; font-size: 30px; color: white;font-family: 'Ubuntu', sans-serif;"></p>
+        <p id = "profile_status" style = "text-align: center; font-size: 30px; color: white; font-family: 'Indie Flower', cursive;"></p>
+        <p style = "text-align: center">
+            <span class="fa fa-star checked" style = "font-size: 90px"></span>
+            <span class="fa fa-star checked" style = "font-size: 90px"></span>
+            <span class="fa fa-star checked" style = "font-size: 90px"></span>
+            <span class="fa fa-star" style = "font-size: 90px"></span>
+            <span class="fa fa-star" style = "font-size: 90px"></span>
+          </p>
+        </div>
+        <div class = "container-fluid p-3 mb-2 bg-light text-black" style = "text-align: center;">
+            <b style = "font-size: 20px">STATUS</b>
+          <div class = "row">
+              <div class = "col-sm">
+                  <p style = "font-family: 'Major Mono Display', monospace; font-size: 24px;color: black">countries<br>visited</p>
+                  <p style = "font-family: 'Baloo Bhaina', cursive; font-size: 108px; color: black" id = "countries_visited"></p>
+              </div>
+              <div class = "col-sm">
+                <p style = "font-family: 'Major Mono Display', monospace; font-size: 24px;color: black">quests<br>completed</p>
+                <p style = "font-family: 'Baloo Bhaina', cursive; font-size: 108px;color: black" id = "quests_completed"></p>
+            </div>
+            <div class = "col-sm">
+                <p style = "font-family: 'Major Mono Display', monospace; font-size: 24px;color: black">total<br>points</p>
+                <p style = "font-family: 'Baloo Bhaina', cursive; font-size: 108px; color: black" id = "total_points"></p>
+            </div>
+            </div>
+      </div>
+      <div class = "container-fluid p-3 mb-2 bg-dark text-white" style = "font-family: 'Baloo Bhaina', cursive; text-align: center;" id = "photo_section">
+          <b style = "margin: 10px 10px 10px 10px; font-size: 20px">PHOTOS</b>
+          <table align = center id = "imageTable" width = 100%>
+              <tr>
+                <td style = "text-align: center" id = "image1"></td>
+                <td style = "text-align: center" id = "image2"></td>
+                <td style = "text-align: center" id = "image3"></td>
+              </tr>
+            </table>
+          </div>
+      </div>
+    </div>
+      </div>
+    </div>
+    <div class = "overlay"></div>
+    <a href = "./mypage.html"><button class = "btn btn-success btn-block" style = "margin: 10px 10px 10px 10px; float: right; width: 100px; height: 50px">Close</button></a>
+    <div>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+   <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+   <script src = "static/js/travel_summary.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+        bindEvents();
+        $("#sidebar").mCustomScrollbar({
+            theme: "minimal"
+        });
+        $('#dismiss, .overlay').on('click', function () {
+            // hide sidebar
+            $('#sidebar').removeClass('active');
+            // hide overlay
+            $('.overlay').removeClass('active');
+        });
+        $('#sidebarCollapse').on('click', function () {
+            // open sidebar
+            $('#sidebar').addClass('active');
+            // fade in the overlay
+            $('.overlay').addClass('active');
+            $('.collapse.in').toggleClass('in');
+            $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+        });
+    });
+    </script>
+ 
+  </body>
+</html>
