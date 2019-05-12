@@ -1,8 +1,13 @@
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+<<<<<<< HEAD
+body {
+    background: #fafafa;
+=======
 @import url(https://fonts.googleapis.com/css?family=Play);
 body {
     background: #fafafa;
     -webkit-user-select:none;
+>>>>>>> 9a23a0430327f03fb6b9a5c4df039320c12d32a0
 }
 
 p {
@@ -299,6 +304,9 @@ ul ul a {
     color:#FF912C;
   }
 
+<<<<<<< HEAD
+  
+=======
   td {
     padding: 15px;
     text-align: center;
@@ -378,3 +386,4 @@ ul ul a {
   .btn:hover {
     background: #2db34a;
   }
+>>>>>>> 9a23a0430327f03fb6b9a5c4df039320c12d32a0
