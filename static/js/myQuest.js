@@ -115,6 +115,9 @@ function readFromDatabase_profile() {
 
 function addAllContentsToTable() {
     for (let i = 0; i < current_quest.length; i++) {
+        if (current_quest[i] == null){
+            continue;
+        }
         let row = quest_table.insertRow(quest_table.rows.length);
         let col1 = row.insertCell(0);
         let col2 = row.insertCell(1);
