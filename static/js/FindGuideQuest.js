@@ -218,6 +218,9 @@ $( document ).ready(function() {
             // addQuest button
             for (var i=0; i<questNum; i++) {
                 let added = false;
+                if (quest[i] == null) {
+                    continue;
+                }
                 let quest_id = quests[i].quest_id;
                 let button;
                 let div;
