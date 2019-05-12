@@ -296,24 +296,6 @@ function addThisQuest(id){
             }
         }
     }
-    // for (let i = 0; i < profile.length; i++){
-    //     if (profile[i].quest_id ==id){
-    //         current_quest.push(profile[i])
-    //         let disable_button = document.getElementById(`button_${profile[i].quest_id}`);
-    //         disable_button.disabled = true;
-    //         disable_button.class = 'btn btn-outline-warning';
-    //         disable_button.innerHTML = "Already Added";
-    //
-    //
-    //
-    //         var newKey = firebase.database().ref('/Quests');
-    //         newKey.set({
-    //             Quests:current_quest
-    //         });
-    //
-    //     }
-    //
-    // }
 
     initializeTable();
     addAllContentsToTable();
@@ -356,7 +338,8 @@ function uploadFile(id){
                 quest_provider_name : "Obama",
                 quest_provider_picture: "./static/images/people2.jpg",
                 place_name: "Empire State Building, New York",
-                country_name: "United States America"
+                country_name: "United States America",
+                point : clicking_quest.point
 
 
             }
@@ -383,8 +366,6 @@ function uploadFile(id){
 
 
 initializeTable();
-//addAllContentsToTable();
-
 readFromDatabase_profile();
 readFromDatabase();
 
