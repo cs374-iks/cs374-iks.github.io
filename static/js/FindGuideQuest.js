@@ -216,9 +216,9 @@ $( document ).ready(function() {
             </div>`;
 
             // addQuest button
-            for (var i=0; i<guideQuests.length; i++) {
+            for (var i=0; i<quests.length; i++) {
                 let added = false;
-                let quest_id = guideQuests[i].quest_id;
+                let quest_id = quests[i].quest_id;
                 let button;
                 let div;
                 for (var j=0; userQuests && j<userQuests.length; j++) {
@@ -235,11 +235,10 @@ $( document ).ready(function() {
                     button.type = 'button';
                     button.innerHTML = 'Added';
                     
-                    button.onclick = function() {
-                        onClickDeleteQuest(this, quest_id);
-                    };
+                    button.onclick = () => { onClickDeleteQuest(button, quest_id); };
 
                     div = document.getElementById(`addQuestButton${quest_id}`);
+                    div.innerHTML = '';
                     div.appendChild(button);
                 } else {                    
                     button = document.createElement("button");
@@ -247,11 +246,10 @@ $( document ).ready(function() {
                     button.type = 'button';
                     button.innerHTML = 'Add Quest';
 
-                    button.onclick = function() {
-                        onClickAddQuest(this, quest_id);
-                    };
+                    button.onclick = () => { onClickAddQuest(button, quest_id); };
 
                     div = document.getElementById(`addQuestButton${quest_id}`);
+                    div.innerHTML = '';
                     div.appendChild(button);
                 }
             }
