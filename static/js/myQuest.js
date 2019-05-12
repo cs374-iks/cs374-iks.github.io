@@ -124,9 +124,18 @@ function addAllContentsToTable() {
         let col4 = row.insertCell(3);
         let col5 = row.insertCell(4);
 
+        let quest_provider;
+
+        for (let j = 0 ; j < profile.length; j ++ ){
+            if (profile[j].id == current_quest[i].profile_id){
+                quest_provider = profile[j]
+
+            }
+        }
+
 
         if (current_quest[i].quest_status) { //when quest is completed
-            col1.innerHTML = `<img src=${current_quest[i].profile_img} width = 50em height = 50em alt="donald trump" data-target = "#modal_profile" data-toggle = "modal" role = 'button' onclick="clickProfile('${current_quest[i].profile_id}')" > `;
+            col1.innerHTML = `<img src="./static/img/${quest_provider.name}_profile.png" width = 50em height = 50em alt="donald trump" data-target = "#modal_profile" data-toggle = "modal" role = 'button' onclick="clickProfile('${current_quest[i].profile_id}')" > `;
 
             col2.innerHTML =`<div class = "img_container">
                                 <img src = "./static/img/medal.png" width = 50em height = 50 em title = "Amount of point if you accomplish your goal">
@@ -147,7 +156,7 @@ function addAllContentsToTable() {
                 `quest complete!`
 
         } else { //when quest is not completed
-            col1.innerHTML = `<img src=${current_quest[i].profile_img} width = 50em height = 50em alt="donald trump" data-target = "#modal_profile" data-toggle = "modal" role = 'button' onclick="clickProfile('${current_quest[i].profile_id}')" > `;
+            col1.innerHTML = `<img src="./static/img/${quest_provider.name}_profile.png"} width = 50em height = 50em alt="donald trump" data-target = "#modal_profile" data-toggle = "modal" role = 'button' onclick="clickProfile('${current_quest[i].profile_id}')" > `;
 
             col2.innerHTML =`<div class = "img_container">
                                 <img src = "./static/img/medal.png" width = 50em height = 50 em title = "Amount of point if you accomplish your goal">
@@ -214,7 +223,7 @@ function clickProfile(profile_id){ //function when click profile image
         }
     }
 
-    profile_instruction.innerHTML = `<img src="${profile[0].quest_provider_picture}" class="mr-3" style="height:128px; width:128px; overflow:hidden;">
+    profile_instruction.innerHTML = `<img src="./static/img/${quest_provider.name}_profile.png" class="mr-3" style="height:128px; width:128px; overflow:hidden;">
                     <div class="media-body">
                       <h6 class="mt-0">
                         ${quest_provider.name}
@@ -268,24 +277,43 @@ function clickProfile(profile_id){ //function when click profile image
 }
 
 function addThisQuest(id){
-    for (let i = 1; i < profile.length; i++){
-        if (profile[i].quest_id ==id){
-            current_quest.push(profile[i])
-            let disable_button = document.getElementById(`button_${profile[i].quest_id}`);
-            disable_button.disabled = true;
-            disable_button.class = 'btn btn-outline-warning';
-            disable_button.innerHTML = "Already Added"
+
+    for (let i =0 ; i < profile.length; i ++){
+        for (let j = 0 ; j< profile[i].quests.length; j ++){
+            if (profile[i].quests[j].quest_id == id) {
+                current_quest.push(profile[i].quests[j])
+                let disable_button = document.getElementById(`button_${profile[i].quests[j].quest_id}`);
+                disable_button.disabled = true;
+                disable_button.class = 'btn btn-outline-warning';
+                disable_button.innerHTML = "Already Added";
 
 
 
-            var newKey = firebase.database().ref('/Quests');
-            newKey.set({
-                Quests:current_quest
-            });
-
+                var newKey = firebase.database().ref('/Quests');
+                newKey.set({
+                    Quests:current_quest
+                });
+            }
         }
-
     }
+    // for (let i = 0; i < profile.length; i++){
+    //     if (profile[i].quest_id ==id){
+    //         current_quest.push(profile[i])
+    //         let disable_button = document.getElementById(`button_${profile[i].quest_id}`);
+    //         disable_button.disabled = true;
+    //         disable_button.class = 'btn btn-outline-warning';
+    //         disable_button.innerHTML = "Already Added";
+    //
+    //
+    //
+    //         var newKey = firebase.database().ref('/Quests');
+    //         newKey.set({
+    //             Quests:current_quest
+    //         });
+    //
+    //     }
+    //
+    // }
 
     initializeTable();
     addAllContentsToTable();
@@ -356,6 +384,7 @@ function uploadFile(id){
 
 initializeTable();
 //addAllContentsToTable();
-readFromDatabase();
+
 readFromDatabase_profile();
+readFromDatabase();
 

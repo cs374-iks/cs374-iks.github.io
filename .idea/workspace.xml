@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/static/js/myQuest.js" line="282" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="86d646b3-cc30-49f0-97b4-968d98d2056b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -17,19 +20,19 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mypage.html">
+        <entry file="file://$PROJECT_DIR$/FindGuideQuestResult.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="22" column="40" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
+            <state relative-caret-position="470">
+              <caret line="41" column="15" selection-start-line="41" selection-start-column="15" selection-end-line="41" selection-end-column="15" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FindGuideQuestResult.html">
+        <entry file="file://$PROJECT_DIR$/FindGuideQuest.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="779">
-              <caret line="41" column="15" selection-start-line="41" selection-start-column="15" selection-end-line="41" selection-end-column="15" />
+            <state relative-caret-position="494">
+              <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -37,8 +40,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/myQuest.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1230">
-              <caret line="261" column="26" lean-forward="true" selection-start-line="261" selection-start-column="26" selection-end-line="261" selection-end-column="26" />
+            <state relative-caret-position="-4465">
+              <caret line="25" column="56" lean-forward="true" selection-start-line="25" selection-start-column="56" selection-end-line="25" selection-end-column="56" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -47,27 +50,48 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/js/sidebar.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="12" selection-start-line="12" selection-end-line="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/js/myQuest.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="15" column="65" lean-forward="true" selection-start-line="15" selection-start-column="65" selection-end-line="15" selection-end-column="65" />
+            <state relative-caret-position="196">
+              <caret line="250" column="35" lean-forward="true" selection-start-line="250" selection-start-column="35" selection-end-line="250" selection-end-column="35" />
               <folding>
-                <element signature="n#style#0;n#a#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/images/table3.jpg">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/img/doyou1.png">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/img/doyou_profile.png">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/img/jiyoung_profile.png">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/img/Obama_profile.png">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/img/doyou2.png">
+          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
     </leaf>
@@ -93,6 +117,9 @@
       <find>clickprofile</find>
       <find>clickProfile</find>
       <find>readfrom</find>
+      <find>profile</find>
+      <find>addthisquest</find>
+      <find>disable_button</find>
     </findStrings>
     <replaceStrings>
       <replace>current_quest</replace>
@@ -139,6 +166,18 @@
               <item name="cs374-iks.github.io" type="b2602c69:ProjectViewProjectNode" />
               <item name="cs374-iks.github.io" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cs374-iks.github.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cs374-iks.github.io" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cs374-iks.github.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cs374-iks.github.io" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cs374-iks.github.io" type="b2602c69:ProjectViewProjectNode" />
@@ -201,12 +240,13 @@
       <workItem from="1557407756291" duration="299000" />
       <workItem from="1557540478859" duration="19000" />
       <workItem from="1557549950378" duration="73000" />
-      <workItem from="1557634430817" duration="1760000" />
+      <workItem from="1557634430817" duration="1822000" />
+      <workItem from="1557637021345" duration="3020000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41435000" />
+    <option name="totallyTimeSpent" value="44517000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="55" y="-7" width="1488" height="878" extended-state="6" />
@@ -259,13 +299,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FindGuideQuest.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/images/people1.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -303,13 +336,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FindGuideQuestResult.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="779">
-          <caret line="41" column="15" selection-start-line="41" selection-start-column="15" selection-end-line="41" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/sidebar.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
@@ -317,10 +343,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/static/img/doyou2.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/img/doyou1.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/img/doyou_profile.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/img/jiyoung_profile.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/img/Obama_profile.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FindGuideQuestResult.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="470">
+          <caret line="41" column="15" selection-start-line="41" selection-start-column="15" selection-end-line="41" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FindGuideQuest.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/images/table3.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/myQuest.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1230">
-          <caret line="261" column="26" lean-forward="true" selection-start-line="261" selection-start-column="26" selection-end-line="261" selection-end-column="26" />
+        <state relative-caret-position="-4465">
+          <caret line="25" column="56" lean-forward="true" selection-start-line="25" selection-start-column="56" selection-end-line="25" selection-end-column="56" />
           <folding>
             <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -330,10 +388,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/myQuest.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="15" column="65" lean-forward="true" selection-start-line="15" selection-start-column="65" selection-end-line="15" selection-end-column="65" />
+        <state relative-caret-position="196">
+          <caret line="250" column="35" lean-forward="true" selection-start-line="250" selection-start-column="35" selection-end-line="250" selection-end-column="35" />
           <folding>
-            <element signature="n#style#0;n#a#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
           </folding>
