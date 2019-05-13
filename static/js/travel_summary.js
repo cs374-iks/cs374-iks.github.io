@@ -1,15 +1,3 @@
-var firebaseConfig = {
-    apiKey: "AIzaSyBIgcf6w3mkZp-xPSgNLRINDawRiFysKR4",
-    authDomain: "fir-test-ded6e.firebaseapp.com",
-    databaseURL: "https://fir-test-ded6e.firebaseio.com",
-    projectId: "fir-test-ded6e",
-    storageBucket: "fir-test-ded6e.appspot.com",
-    messagingSenderId: "418674999387",
-    appId: "1:418674999387:web:6a3810e3dd528868"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-
 let currentTravelStatus = [
     {
         profile_img: "./static/img/user_profile_img.jpg",
@@ -132,8 +120,6 @@ function fillPhotoImage(divObj, img, imgID) {
     createImage.height = "350";
     createImage.width = "350";
     createImage.style.border = "1px solid black";
-
-
     divObj.appendChild(createImage);
 }
 
@@ -343,7 +329,7 @@ function AddBackgroundImage(background_image) {
 }  
 
 function readFromDatabase() {
-    return firebase.database().ref().on('value', function(snapshot) {
+    return firebase.database().ref("/Quests/").on('value', function(snapshot) {
         // initializeTable();
 
         var myValue = snapshot.val();
@@ -352,10 +338,5 @@ function readFromDatabase() {
         for (var key in diary_from_db){
             QuestCompletedFromDataBase.push(diary_from_db[key]);
         }
-
-
-
-        
-
     });
 }
