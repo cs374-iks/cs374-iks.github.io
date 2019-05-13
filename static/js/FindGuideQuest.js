@@ -218,7 +218,7 @@ $( document ).ready(function() {
             // addQuest button
             for (var i=0; i<questNum; i++) {
                 let added = false;
-                if (quest[i] == null) {
+                if (!quests[i]) {
                     continue;
                 }
                 let quest_id = quests[i].quest_id;
