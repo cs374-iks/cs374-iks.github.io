@@ -332,6 +332,9 @@ function uploadFile(id){
             console.log('File available at', downloadURL);
             let clicking_quest;
             for (let i = 0; i < current_quest.length; i++){
+                if (current_quest[i] ==null){
+                    continue
+                }
                 if (current_quest[i].quest_id ==id){
                     current_quest[i].quest_status = true;
                     clicking_quest = current_quest[i]
