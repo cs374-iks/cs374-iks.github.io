@@ -199,6 +199,9 @@ function updateGoogleMap(update_place){
 
 function removeById(id){//function when 'Quit quest'
     for (let i = 0; i < current_quest.length; i++){
+        if (current_quest[i] == null){
+            continue;
+        }
         if (current_quest[i].quest_id ==id){
             current_quest.splice(i,1);
         }
@@ -260,6 +263,9 @@ function clickProfile(profile_id){ //function when click profile image
         //col4.innerHTML = `<a data-target = "#modal_map" data-toggle = "modal" role = 'button' onclick=`+"updateGoogleMap(${profile[i].place_name});>press here </a>"
 
         for (let j = 0; j < current_quest.length ; j ++){
+            if (current_quest[j] == null){
+                continue;
+            }
             if (quests_provided_by_provider[i].quest_id == current_quest[j].quest_id){
                 alreadyAdded = true;
             }
@@ -326,6 +332,9 @@ function uploadFile(id){
             console.log('File available at', downloadURL);
             let clicking_quest;
             for (let i = 0; i < current_quest.length; i++){
+                if (current_quest[i] ==null){
+                    continue
+                }
                 if (current_quest[i].quest_id ==id){
                     current_quest[i].quest_status = true;
                     clicking_quest = current_quest[i]
