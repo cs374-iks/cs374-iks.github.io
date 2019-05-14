@@ -63,7 +63,7 @@ Use this for jQuery
 
   * Travel Summary page
 
-    <img src="./readme_img/summary_new." width="250">
+    <img src="./readme_img/summary_new.png" width="250">
 
     When the users click 'I finish my trip' button on previous page, it shows the tracks of this trip. 
 
