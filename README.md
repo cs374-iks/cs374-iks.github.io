@@ -29,17 +29,17 @@ Use this for jQuery
 
 * Main page
 
-    <img src="./main_1.PNG" width="250">
+    <img src="./readme_img/main_1.PNG" width="250">
 
     This is the main page of our website. The user can start by clicking 'start here'
 
   * Find Guides and Quest page
 
-    <img src="./guide_1.PNG" width="250">
+    <img src="./readme_img/guide_1.PNG" width="250">
 
     User can find their quests provided by the guides.
 
-    <img src="./guide_2.PNG" width="250">
+    <img src="./readme_img/guide_2.PNG" width="250">
 
     When the user click the image of the guide, the user can select quests provided by this guide.
 
@@ -49,11 +49,11 @@ Use this for jQuery
 
   * My Quest page
 
-    <img src="./quest_1.PNG" width="250">
+    <img src="./readme_img/quest_1.PNG" width="250">
 
     User can check quests added on previous page. 
 
-    <img src="./quest_2.PNG" width="250">
+    <img src="./readme_img/quest_2.PNG" width="250">
 
     
 
@@ -63,11 +63,11 @@ Use this for jQuery
 
   * Travel Summary page
 
-    <img src="./summary_1.PNG" width="250">
+    <img src="./readme_img/summary_1.PNG" width="250">
 
     When the users click 'I finish my trip' button on previous page, it shows the tracks of this trip. 
 
-    <img src="./summary_2.PNG" width="250">
+    <img src="./readme_img/summary_2.PNG" width="250">
 
     Photos and diaries uploaded by the users on the previous page can be seen here. 
 
@@ -77,7 +77,7 @@ Use this for jQuery
 
   * Ranking page
 
-    <img src="./rank_1.PNG" width="250">
+    <img src="./readme_img/rank_1.PNG" width="250">
 
     Users can compare their stats with others in ranking page. 
 
@@ -88,7 +88,7 @@ Use this for jQuery
 
   * My page
 
-    <img src="./mypage_1.PNG" width="250">
+    <img src="./readme_img/mypage_1.PNG" width="250">
 
     Users can check how many quests are cleared, and points are earned on my page. 
 
