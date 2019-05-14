@@ -1,3 +1,15 @@
+var firebaseConfig = {
+    apiKey: "AIzaSyBIgcf6w3mkZp-xPSgNLRINDawRiFysKR4",
+    authDomain: "fir-test-ded6e.firebaseapp.com",
+    databaseURL: "https://fir-test-ded6e.firebaseio.com",
+    projectId: "fir-test-ded6e",
+    storageBucket: "fir-test-ded6e.appspot.com",
+    messagingSenderId: "418674999387",
+    appId: "1:418674999387:web:6a3810e3dd528868"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
 let currentTravelStatus = [
     {
         profile_img: "./static/img/user_profile_img.jpg",
@@ -10,8 +22,11 @@ let currentTravelStatus = [
         gained_points: "180",
     }
 ]
-let QuestCompletedFromDataBase = [];
-let QuestCompleted = [
+// Data Acquired From Firebase
+let QuestCompleted = [];
+
+// Dummy Data
+let QuestCompletedFromDatabase = [
     {
         url: "./static/img/img1.jpg",
         imgID : "img_1",
@@ -113,10 +128,10 @@ function fillProfileImage(divObj, img) {
     divObj.appendChild(createImage);
 }
 
-function fillPhotoImage(divObj, img, imgID) {
+function fillPhotoImage(divObj, imgIndex) {
     let createImage = document.createElement("img");
-    createImage.src = img;
-    createImage.id = imgID;
+    createImage.src = QuestCompleted[imgIndex].url;
+    createImage.id = QuestCompleted[imgIndex].imgID;
     createImage.height = "350";
     createImage.width = "350";
     createImage.style.border = "1px solid black";
@@ -198,13 +213,12 @@ function AddRows(img1, img2, img3) {
         $("#exampleModal").modal("toggle");
     });
 
-
-    fillPhotoImage(cell1, QuestCompleted[img1].url, QuestCompleted[img1].imgID);
+    fillPhotoImage(cell1, img1);
     if (img2 == "..") {
         cell2.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
     } else {
         cell2.style.paddingBottom = "30px";
-        fillPhotoImage(cell2, QuestCompleted[img2].url, QuestCompleted[img2].imgID);
+        fillPhotoImage(cell2, img2);
         cell2.addEventListener("click", function(){
             document.getElementById("modal-body").innerHTML = "";
             document.getElementById("diary").innerHTML = "";
@@ -240,7 +254,7 @@ function AddRows(img1, img2, img3) {
         cell3.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
     } else {
         cell3.style.paddingBottom = "30px";
-        fillPhotoImage(cell3, QuestCompleted[img3].url, QuestCompleted[img3].imgID);
+        fillPhotoImage(cell3, img3);
         cell3.addEventListener("click", function(){
             document.getElementById("modal-body").innerHTML = "";
             document.getElementById("diary").innerHTML = "";
@@ -328,15 +342,15 @@ function AddBackgroundImage(background_image) {
     document.getElementById("background").style.backgroundImage = imageURL;
 }  
 
-function readFromDatabase() {
-    return firebase.database().ref("/Quests/").on('value', function(snapshot) {
+function readFromDatabase(callback) {
+    return firebase.database().ref().on('value', function(snapshot) {
         // initializeTable();
 
         var myValue = snapshot.val();
         let diary_from_db = myValue.Diary;
-        console.log(diary_from_db);
         for (var key in diary_from_db){
-            QuestCompletedFromDataBase.push(diary_from_db[key]);
+            QuestCompleted.push(diary_from_db[key]);
         }
+    callback();
     });
 }

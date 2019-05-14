@@ -22,11 +22,13 @@
 
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.1/firebase-database.js"></script>
   </head>
 
   <body>
       <div class="wrapper">
-        <nav class="navbar navbar-expand-md navbar-dark bg-secondary">
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top" style = "background-color: #9e8cd3;">
           <button class="navbar-toggler" type="button" id="sidebarCollapse" data-toggle="collapse" data-target="" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -130,18 +132,29 @@
     <div>
   
   <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+  <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
-        <div class="modal-header" style = "background-color: rgb(44, 44, 44)">
+        <div class="modal-header" style = "background-color: #9e8cd3">
           <h5 class="modal-title" id="exampleModalLabel"></h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color:white;">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body" id = "modal-body" align = "center"></div>
+        <div class="modal-body">
+          <div class = "container">
+            <div class = "row">
+              <div class = "col-sm" id = "modal-body">
+
+              </div>
+              <div class = "col-sm" id = "diary">
+
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="modal-footer">
-          <div class = "diary" id = "diary"></div>
+          <div class = "diary" style = "margin-right: 50px"></div>
         </div>
       </div>
     </div>
@@ -157,7 +170,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
     <script type="text/javascript">
     $(document).ready(function () {
-        bindEvents();
+        readFromDatabase(bindEvents);
 
         flicker();
         doit();
@@ -183,23 +196,8 @@
  
   </body>
       <!-- The core Firebase JS SDK is always required and must be listed first -->
-      <script src="https://www.gstatic.com/firebasejs/6.0.1/firebase-app.js"></script>
+
 
       <!-- TODO: Add SDKs for Firebase products that you want to use
           https://firebase.google.com/docs/web/setup#config-web-app -->
-  
-      <script>
-        // Your web app's Firebase configuration
-        var firebaseConfig = {
-          apiKey: "AIzaSyBIgcf6w3mkZp-xPSgNLRINDawRiFysKR4",
-          authDomain: "fir-test-ded6e.firebaseapp.com",
-          databaseURL: "https://fir-test-ded6e.firebaseio.com",
-          projectId: "fir-test-ded6e",
-          storageBucket: "fir-test-ded6e.appspot.com",
-          messagingSenderId: "418674999387",
-          appId: "1:418674999387:web:6a3810e3dd528868"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-      </script>
 </html>
