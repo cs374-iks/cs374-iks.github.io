@@ -1,3 +1,15 @@
+var firebaseConfig = {
+    apiKey: "AIzaSyBIgcf6w3mkZp-xPSgNLRINDawRiFysKR4",
+    authDomain: "fir-test-ded6e.firebaseapp.com",
+    databaseURL: "https://fir-test-ded6e.firebaseio.com",
+    projectId: "fir-test-ded6e",
+    storageBucket: "fir-test-ded6e.appspot.com",
+    messagingSenderId: "418674999387",
+    appId: "1:418674999387:web:6a3810e3dd528868"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
 let currentTravelStatus = [
     {
         profile_img: "./static/img/user_profile_img.jpg",
@@ -10,8 +22,8 @@ let currentTravelStatus = [
         gained_points: "180",
     }
 ]
-let QuestCompletedFromDataBase = [];
-let QuestCompleted = [
+let QuestCompleted = [];
+let QuestCompletedFromDatabase = [
     {
         url: "./static/img/img1.jpg",
         imgID : "img_1",
@@ -115,7 +127,8 @@ function fillProfileImage(divObj, img) {
 
 function fillPhotoImage(divObj, img, imgID) {
     let createImage = document.createElement("img");
-    createImage.src = img;
+    console.log(img);
+    createImage.src = "url(" + img + ")";
     createImage.id = imgID;
     createImage.height = "350";
     createImage.width = "350";
@@ -199,8 +212,7 @@ function AddRows(img1, img2, img3) {
         diaryText.innerHTML = QuestCompleted[img1].diary;
         $("#exampleModal").modal("toggle");
     });
-
-
+    
     fillPhotoImage(cell1, QuestCompleted[img1].url, QuestCompleted[img1].imgID);
     if (img2 == "..") {
         cell2.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
@@ -330,20 +342,16 @@ function AddBackgroundImage(background_image) {
     document.getElementById("background").style.backgroundImage = imageURL;
 }  
 
-function readFromDatabase() {
-    return firebase.database().ref("/Quests/").on('value', function(snapshot) {
+function readFromDatabase(callback) {
+    return firebase.database().ref().on('value', function(snapshot) {
         // initializeTable();
 
         var myValue = snapshot.val();
         let diary_from_db = myValue.Diary;
-        console.log(diary_from_db);
         for (var key in diary_from_db){
-            QuestCompletedFromDataBase.push(diary_from_db[key]);
+            QuestCompleted.push(diary_from_db[key]);
         }
-
-
-
         
-
+    callback();
     });
 }
