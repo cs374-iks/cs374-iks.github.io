@@ -22,7 +22,7 @@
 
   <body>
       <div class="wrapper">
-        <nav class="navbar navbar-expand-md navbar-dark bg-secondary">
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top" style = "background-color: #9e8cd3;">
           <button class="navbar-toggler" type="button" id="sidebarCollapse" data-toggle="collapse" data-target="" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -126,18 +126,29 @@
     <div>
   
   <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+  <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
-        <div class="modal-header" style = "background-color: rgb(44, 44, 44)">
+        <div class="modal-header" style = "background-color: #9e8cd3">
           <h5 class="modal-title" id="exampleModalLabel"></h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color:white;">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body" id = "modal-body" align = "center"></div>
+        <div class="modal-body">
+          <div class = "container">
+            <div class = "row">
+              <div class = "col-sm" id = "modal-body">
+
+              </div>
+              <div class = "col-sm" id = "diary">
+
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="modal-footer">
-          <div class = "diary" id = "diary"></div>
+          <div class = "diary" style = "margin-right: 50px"></div>
         </div>
       </div>
     </div>
@@ -175,8 +186,6 @@
             $('.collapse.in').toggleClass('in');
             $('a[aria-expanded=true]').attr('aria-expanded', 'false');
         });
-
-        r
     });
     </script>
  
