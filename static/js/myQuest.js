@@ -1,34 +1,5 @@
 let current_quest = [
-    {
-        profile_id : "asdf",
-        point : "15",
-        quest_content: "Visit Statue of Liberty, and take photo",
-        place_img : "./static/images/table1.jpg",
-        place_name : "statue of liberty",
-        quest_status : false,
-        quest_id : "1"
 
-    },
-    {
-        profile_id : "asdf",
-        point : "15",
-        quest_content: "Visit Statue of Liberty, and take photo",
-        place_img : "./static/images/table1.jpg",
-        place_name : "statue of liberty",
-        quest_status : false,
-        quest_id : "1"
-
-    },
-    {
-        profile_id : "asdf",
-        point : "15",
-        quest_content: "Visit Statue of Liberty, and take photo",
-        place_img : "./static/images/table1.jpg",
-        place_name : "statue of liberty",
-        quest_status : false,
-        quest_id : "1"
-
-    }
 ];
 
 let profile_temp = [];
@@ -77,6 +48,7 @@ function initializeTable() {
     /*
       Initialize the courses in the right plane
     */
+
     let numRow = quest_table.rows.length;
     for (let i = 0; i < numRow - 1; i++){
         quest_table.deleteRow(1);
@@ -85,11 +57,15 @@ function initializeTable() {
 }
 
 function readFromDatabase() {
-    return firebase.database().ref('/Quests/').on('value', function(snapshot) {
+    return firebase.database().ref('/Quests/Quests').on('value', function(snapshot) {
         // initializeTable();
 
         var myValue = snapshot.val();
-        current_quest = myValue.Quests;
+        current_quest = []
+        for (let key in myValue){
+            current_quest.push(myValue[key])
+        }
+
 
 
         console.log(myValue);
@@ -114,7 +90,11 @@ function readFromDatabase_profile() {
 
 
 function addAllContentsToTable() {
+
     for (let i = 0; i < current_quest.length; i++) {
+        if (current_quest[i] == null){
+            continue;
+        }
         let row = quest_table.insertRow(quest_table.rows.length);
         let col1 = row.insertCell(0);
         let col2 = row.insertCell(1);
@@ -196,11 +176,15 @@ function updateGoogleMap(update_place){
 
 function removeById(id){//function when 'Quit quest'
     for (let i = 0; i < current_quest.length; i++){
+        if (current_quest[i] == null){
+            continue;
+        }
         if (current_quest[i].quest_id ==id){
             current_quest.splice(i,1);
         }
 
     }
+    console.log(current_quest)
     var newKey = firebase.database().ref('/Quests');
     newKey.set({
         Quests:current_quest
@@ -257,6 +241,9 @@ function clickProfile(profile_id){ //function when click profile image
         //col4.innerHTML = `<a data-target = "#modal_map" data-toggle = "modal" role = 'button' onclick=`+"updateGoogleMap(${profile[i].place_name});>press here </a>"
 
         for (let j = 0; j < current_quest.length ; j ++){
+            if (current_quest[j] == null){
+                continue;
+            }
             if (quests_provided_by_provider[i].quest_id == current_quest[j].quest_id){
                 alreadyAdded = true;
             }
@@ -323,6 +310,9 @@ function uploadFile(id){
             console.log('File available at', downloadURL);
             let clicking_quest;
             for (let i = 0; i < current_quest.length; i++){
+                if (current_quest[i] ==null){
+                    continue
+                }
                 if (current_quest[i].quest_id ==id){
                     current_quest[i].quest_status = true;
                     clicking_quest = current_quest[i]
@@ -362,6 +352,13 @@ function uploadFile(id){
     });
 
 
+}
+
+function resetMyQuest(){
+    var newKey = firebase.database().ref('/Quests');
+    newKey.set({
+        Quests:[]
+    });
 }
 
 

@@ -135,8 +135,6 @@ function fillPhotoImage(divObj, imgIndex) {
     createImage.height = "350";
     createImage.width = "350";
     createImage.style.border = "1px solid black";
-
-
     divObj.appendChild(createImage);
 }
 
@@ -353,7 +351,6 @@ function readFromDatabase(callback) {
         for (var key in diary_from_db){
             QuestCompleted.push(diary_from_db[key]);
         }
-        
     callback();
     });
 }
