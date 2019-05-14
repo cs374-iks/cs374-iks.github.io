@@ -354,6 +354,13 @@ function uploadFile(id){
 
 }
 
+function resetMyQuest(){
+    var newKey = firebase.database().ref('/Quests');
+    newKey.set({
+        Quests:[]
+    });
+}
+
 
 initializeTable();
 readFromDatabase_profile();
