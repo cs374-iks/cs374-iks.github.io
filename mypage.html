@@ -81,11 +81,11 @@
           <div class="row">
             <div class="col-sm" style="padding-right:20px; border-right: 1px solid #ccc; border-bottom: 1px solid #ccc; padding-top: 10px;">
               <p style="font-size: 24px;color: black">countries<br>visited</p>
-              <p style="font-size: 70px;color: black" id="countries_visited">10</p>
+              <p style="font-size: 70px;color: black" id="countries_visited">0</p>
             </div>
             <div class="col-sm" style="padding-right:20px; border-right: 1px solid #ccc; border-bottom: 1px solid #ccc; padding-top: 10px;">
               <p style="font-size: 24px;color: black">quests<br>completed</p>
-              <p style="font-size: 70px;color: black" id="quests_completed">35</p>
+              <p style="font-size: 70px;color: black" id="quests_completed">0</p>
               <br>
             </div>
             <div class="col-sm" style="padding-right:20px; border-right: 1px solid #ccc; border-bottom: 1px solid #ccc; padding-top: 10px;">
@@ -96,6 +96,11 @@
           </div>
         </div>
         <hr>
+        <div class="recent" style="margin-right: 50px;margin-left: 50px;">
+          <h1>History</h1>
+          <table id="history_tb" class="table table-striped">
+          </table>
+        </div>
       </div>
       <div class="overlay"></div>
     <div>
@@ -139,6 +144,8 @@
             let t = v[key];
             score += t.point;
             country.add(t.country_name);
+
+            $("#history_tb").append( '<tr><td>' + t.quest_content + '</td></tr>' );
           }
           $("#total_points").html(score);
           $("#countries_visited").html(country.size);
