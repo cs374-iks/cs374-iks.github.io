@@ -309,6 +309,7 @@ function uploadFile(id){
         uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
             console.log('File available at', downloadURL);
             let clicking_quest;
+
             for (let i = 0; i < current_quest.length; i++){
                 if (current_quest[i] ==null){
                     continue
@@ -320,15 +321,16 @@ function uploadFile(id){
             }
 
             let updates = {};
+            let provider = profile.find(pro => pro.id ==clicking_quest.profile_id)
             let postDiary = {
                 url : downloadURL,
                 imgID: post_key,
                 diary : $("#imageCaption").val(),
-                quest_content: "Visit the Empire State Building, and take photo",
-                quest_provider_name : "Obama",
-                quest_provider_picture: "./static/images/people2.jpg",
-                place_name: "Empire State Building, New York",
-                country_name: "United States America",
+                quest_content: clicking_quest.quest_content,
+                quest_provider_name : provider.id,
+                quest_provider_picture: `./static/img/${provider.name}_profile.png`,
+                place_name: clicking_quest.place_name,
+                country_name: provider.country,
                 point : clicking_quest.point
 
 
