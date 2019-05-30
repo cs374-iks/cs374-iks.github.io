@@ -1,7 +1,7 @@
 /**
  * Searching 
  * . 등록된 모든 Guide에 대해 사용자가 검색한 City 또는 Country에 대해 검색
- * . Pr2에서 구현한 autocomplete(alphabetically sorted), capital letter, press enter 정도는 구현
+ * . Pr2에서 구현한 autocomplete(alphabetically sorted), capital letter 정도는 구현
  * . JS로 검색된 모든 Guide를 보여줄 수 있도록 하는 함수 작성. 
 
  * Add quests
@@ -195,7 +195,7 @@ $( document ).ready(function() {
                 </div> 
                 </div> 
                 <button class='btn' type='button' data-toggle='collapse' data-target='#Collapse${id}' aria-expanded='true' aria-controls='Collapse${id}'> 
-                    <i class='fas fa-angle-down'></i> 
+                    <i class='fas fa-angle-down angle-down'></i> 
                 </button> 
                 <!-- profile of the guide --> 
                 <div id='Collapse${id}' class='collapse' aria-labelledby='Guide${id}' data-parent='#guideAccordion'> 
