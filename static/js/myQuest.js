@@ -41,6 +41,7 @@ let remove_quest_button = document.getElementById('remove_quest_button');
 let upload_button = document.getElementById('upload_button');
 let profile_quest_table = document.getElementById('quest_on_profile');
 let profile_instruction = document.getElementById('profile_instruction');
+let image_caption = document.getElementById('imageCaption');
 let selected_file; //variable for currently uploaded image file
 
 
@@ -295,30 +296,41 @@ function setOnclickOfButton(button,handle_function){
 //handling file upload
 $("#file").on("change",function(event){
    selected_file = event.target.files[0];
+   upload_button.disabled = false;
 });
 
 function uploadFile(id){
     let filename = selected_file.name;
     let storageRef = firebase.storage().ref('/tesetImages/'+filename);
     let uploadTask = storageRef.put(selected_file);
+    let clicking_quest;
+    let selected_row;
+
+    for (let i = 0; i < current_quest.length; i++){
+        if (current_quest[i] ==null){
+            continue
+        }
+        if (current_quest[i].quest_id ==id){
+            current_quest[i].quest_status = true;
+            clicking_quest = current_quest[i];
+            selected_row = i
+            quest_table.rows[i+1].cells[4].innerHTML = `<div class="spinner-border text-primary" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>`
+        }
+    }
 
     uploadTask.on('state_changed',function(snapshot) {
     },function (error) {
+        current_quest[selected_row].quest_status = false;
+        initializeTable();
+        addAllContentsToTable();
+
     },function(){
         let post_key = firebase.database().ref("Diary/").push().key;
         uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
             console.log('File available at', downloadURL);
-            let clicking_quest;
 
-            for (let i = 0; i < current_quest.length; i++){
-                if (current_quest[i] ==null){
-                    continue
-                }
-                if (current_quest[i].quest_id ==id){
-                    current_quest[i].quest_status = true;
-                    clicking_quest = current_quest[i]
-                }
-            }
 
             let updates = {};
             let provider = profile.find(pro => pro.id ==clicking_quest.profile_id)
@@ -344,6 +356,14 @@ function uploadFile(id){
             newKey.set({
                 Quests:current_quest
             });
+            upload_button.disabled = true;
+            image_caption.value = "";
+            document.getElementById("file").value = "";
+
+
+
+
+
             initializeTable();
             addAllContentsToTable();
 
