@@ -339,7 +339,7 @@ function uploadFile(id){
                 imgID: post_key,
                 diary : $("#imageCaption").val(),
                 quest_content: clicking_quest.quest_content,
-                quest_provider_name : provider.id,
+                quest_provider_name : provider.name,
                 quest_provider_picture: `./static/img/${provider.name}_profile.png`,
                 place_name: clicking_quest.place_name,
                 country_name: provider.country,
