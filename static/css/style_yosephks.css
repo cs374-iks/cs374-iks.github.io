@@ -6,6 +6,7 @@ body {
 @import url(https://fonts.googleapis.com/css?family=Play);
 body {
     background: #fafafa;
+    padding-top: 50px;
     -webkit-user-select:none;
 >>>>>>> 9a23a0430327f03fb6b9a5c4df039320c12d32a0
 }

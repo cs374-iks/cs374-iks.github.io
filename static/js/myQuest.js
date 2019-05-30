@@ -1,34 +1,5 @@
 let current_quest = [
-    {
-        profile_id : "asdf",
-        point : "15",
-        quest_content: "Visit Statue of Liberty, and take photo",
-        place_img : "./static/images/table1.jpg",
-        place_name : "statue of liberty",
-        quest_status : false,
-        quest_id : "1"
 
-    },
-    {
-        profile_id : "asdf",
-        point : "15",
-        quest_content: "Visit Statue of Liberty, and take photo",
-        place_img : "./static/images/table1.jpg",
-        place_name : "statue of liberty",
-        quest_status : false,
-        quest_id : "1"
-
-    },
-    {
-        profile_id : "asdf",
-        point : "15",
-        quest_content: "Visit Statue of Liberty, and take photo",
-        place_img : "./static/images/table1.jpg",
-        place_name : "statue of liberty",
-        quest_status : false,
-        quest_id : "1"
-
-    }
 ];
 
 let profile_temp = [];
@@ -77,6 +48,7 @@ function initializeTable() {
     /*
       Initialize the courses in the right plane
     */
+
     let numRow = quest_table.rows.length;
     for (let i = 0; i < numRow - 1; i++){
         quest_table.deleteRow(1);
@@ -85,11 +57,15 @@ function initializeTable() {
 }
 
 function readFromDatabase() {
-    return firebase.database().ref('/Quests/').on('value', function(snapshot) {
+    return firebase.database().ref('/Quests/Quests').on('value', function(snapshot) {
         // initializeTable();
 
         var myValue = snapshot.val();
-        current_quest = myValue.Quests;
+        current_quest = []
+        for (let key in myValue){
+            current_quest.push(myValue[key])
+        }
+
 
 
         console.log(myValue);
@@ -114,6 +90,7 @@ function readFromDatabase_profile() {
 
 
 function addAllContentsToTable() {
+
     for (let i = 0; i < current_quest.length; i++) {
         if (current_quest[i] == null){
             continue;
@@ -207,6 +184,7 @@ function removeById(id){//function when 'Quit quest'
         }
 
     }
+    console.log(current_quest)
     var newKey = firebase.database().ref('/Quests');
     newKey.set({
         Quests:current_quest
@@ -331,6 +309,7 @@ function uploadFile(id){
         uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
             console.log('File available at', downloadURL);
             let clicking_quest;
+
             for (let i = 0; i < current_quest.length; i++){
                 if (current_quest[i] ==null){
                     continue
@@ -342,15 +321,16 @@ function uploadFile(id){
             }
 
             let updates = {};
+            let provider = profile.find(pro => pro.id ==clicking_quest.profile_id)
             let postDiary = {
                 url : downloadURL,
                 imgID: post_key,
                 diary : $("#imageCaption").val(),
-                quest_content: "Visit the Empire State Building, and take photo",
-                quest_provider_name : "Obama",
-                quest_provider_picture: "./static/images/people2.jpg",
-                place_name: "Empire State Building, New York",
-                country_name: "United States America",
+                quest_content: clicking_quest.quest_content,
+                quest_provider_name : provider.id,
+                quest_provider_picture: `./static/img/${provider.name}_profile.png`,
+                place_name: clicking_quest.place_name,
+                country_name: provider.country,
                 point : clicking_quest.point
 
 
@@ -374,6 +354,13 @@ function uploadFile(id){
     });
 
 
+}
+
+function resetMyQuest(){
+    var newKey = firebase.database().ref('/Quests');
+    newKey.set({
+        Quests:[]
+    });
 }
 
 
