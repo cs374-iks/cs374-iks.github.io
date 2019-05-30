@@ -14,8 +14,8 @@
 
 var guides = []; // guides represented as their ids
 var quests = [];
-var questNum = 10;
-var carousel_images_count = [3, 3, 2, 2];
+var questNum = 0;
+var carousel_images_count = [3, 3, 2, 2, 3];
 
 var searchButton = document.getElementById("searchButton");
 var searchInput = document.getElementById("searchInput");
@@ -28,24 +28,32 @@ var subtitle = document.getElementById("subtitle");
 $( document ).ready(function() {
     function init() {
         initGuideList();
-        initQuestList();
-        viewGuideList();
-        bindEvents();
     }
     
     /**
      * initialize top-rated guide list with their ids.
      *  */
     function initGuideList() {
-        guides = [0, 1, 2, 3];
+        firebase.database().ref('/Guides/').once('value').then(function(snapshot) {
+            for (var i=0; i<snapshot.val().length; i++) {
+                guides.push(i);
+                questNum += snapshot.val()[i].quests.length;
+                for (var j=0; j<snapshot.val()[i].quests.length; j++) {
+                    quests.push(null);
+                }
+            }
+            // initQuestList();
+            viewGuideList();
+            bindEvents();
+        });
     }
-
+    /*
     function initQuestList() {
         for (var i=0; i<questNum; i++) {
             quests.push(null);
         }
     }
-    
+    */
     /**
      * bind events with their handlers.
      * . search button
@@ -65,6 +73,7 @@ $( document ).ready(function() {
         // read entire database and match with country and city.
         firebase.database().ref('/Guides/').once('value').then(function(snapshot) {
             guides = [];
+            quests = [];
             function match(left, right) {
                 var lowercase_right = right.charAt(0).toLowerCase() + right.slice(1);
                 return left == right || left == lowercase_right;
