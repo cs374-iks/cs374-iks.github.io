@@ -13,7 +13,6 @@ var firebaseConfig = {
 let currentTravelStatus = [
     {
         profile_img: "./static/img/user_profile_img.jpg",
-        background_image: "./static/img/background_image.jpg",
         username: "Anthony Edward Stark",
         total_points: "1200",
         level: "35",
@@ -114,6 +113,8 @@ let image1 = document.getElementById("image1");
 let image2 = document.getElementById("image2");
 let image3 = document.getElementById("image3");
 let myModal = document.getElementById("exampleModal");
+let quest_provider_name = document.getElementById("quest_provider_name");
+let quest_provider_picture = document.getElementById("quest_provider_image");
 
 function fillContent(divObj, content) {
     divObj.innerHTML = content;
@@ -144,11 +145,10 @@ function bindEvents() {
     fillProfileImage(profile_image, currentTravelStatus[0].profile_img);
     fillContent(username, currentTravelStatus[0].username);
     fillContent(level, ("Level " + currentTravelStatus[0].level));
-    fillContent(countries_visited, currentTravelStatus[0].countries_visited);
-    fillContent(quests_completed, currentTravelStatus[0].quests_completed);
-    fillContent(gained_points, currentTravelStatus[0].gained_points);
+    fillContent(countries_visited, countCountries());
+    fillContent(quests_completed, QuestCompleted.length);
+    fillContent(gained_points, countPoints());
     AddImageContent();
-    AddBackgroundImage(currentTravelStatus[0].background_image);
 }
 
 function AddImageContent() {
@@ -204,6 +204,7 @@ function AddRows(img1, img2, img3) {
     cell1.addEventListener("click", function(){
         document.getElementById("modal-body").innerHTML = "";
         document.getElementById("diary").innerHTML = "";
+        document.getElementById("quest_provider_image").innerHTML = "";
         let createImg = document.createElement("img");
         createImg.src = QuestCompleted[img1].url;
         createImg.height = "350";
@@ -213,6 +214,13 @@ function AddRows(img1, img2, img3) {
         let diaryText = document.getElementById("diary");
         diaryText.innerHTML = QuestCompleted[img1].diary;
         $("#exampleModal").modal("toggle");
+        fillContent(quest_provider_name, QuestCompleted[img1].quest_provider_name);
+        let createImg2 = document.createElement("img");
+        createImg2.src = QuestCompleted[img1].quest_provider_picture;
+        createImg2.height = "70";
+        createImg2.width = "70";
+        createImg2.style.borderRadius = "50%";
+        quest_provider_picture.appendChild(createImg2);
     });
 
     fillPhotoImage(cell1, img1);
@@ -224,6 +232,7 @@ function AddRows(img1, img2, img3) {
         cell2.addEventListener("click", function(){
             document.getElementById("modal-body").innerHTML = "";
             document.getElementById("diary").innerHTML = "";
+            document.getElementById("quest_provider_image").innerHTML = "";
             let createImg = document.createElement("img");
             createImg.src = QuestCompleted[img2].url;
             createImg.height = "350";
@@ -233,6 +242,13 @@ function AddRows(img1, img2, img3) {
             let diaryText = document.getElementById("diary");
             diaryText.innerHTML = QuestCompleted[img2].diary;
             $("#exampleModal").modal("toggle");
+            fillContent(quest_provider_name, QuestCompleted[img2].quest_provider_name);
+            let createImg2 = document.createElement("img");
+            createImg2.src = QuestCompleted[img2].quest_provider_picture;
+            createImg2.height = "70";
+            createImg2.width = "70";
+            createImg2.style.borderRadius = "50%";
+            quest_provider_picture.appendChild(createImg2);
         });
 
         let viewText2 = document.createElement("p");
@@ -269,6 +285,14 @@ function AddRows(img1, img2, img3) {
             let diaryText = document.getElementById("diary");
             diaryText.innerHTML = QuestCompleted[img3].diary;
             $("#exampleModal").modal("toggle");
+            fillContent(quest_provider_name, QuestCompleted[img3].quest_provider_name);
+            document.getElementById("quest_provider_image").innerHTML = "";
+            let createImg2 = document.createElement("img");
+            createImg2.src = QuestCompleted[img3].quest_provider_picture;
+            createImg2.height = "70";
+            createImg2.width = "70";
+            createImg2.style.borderRadius = "50%";
+            quest_provider_picture.appendChild(createImg2);
         });
 
 
@@ -339,10 +363,6 @@ function flicker(){
   Use this function to add the background image (chosen by the user)
 */
 
-function AddBackgroundImage(background_image) {
-    imageURL = "url(" + background_image + ")";
-    document.getElementById("background").style.backgroundImage = imageURL;
-}  
 
 function readFromDatabase(callback) {
     return firebase.database().ref().on('value', function(snapshot) {
@@ -356,4 +376,28 @@ function readFromDatabase(callback) {
         
     callback();
     });
+}
+
+function countPoints(){
+    let count = 0;
+    let total_points = 0;
+    while (count < QuestCompleted.length) {
+        total_points += QuestCompleted[count].point;
+        count += 1;
+    }
+    return total_points;
+}
+
+function countCountries(){
+    let count = 0;
+    let countryList = [];
+    while (count < QuestCompleted.length) {
+        if (countryList.includes(QuestCompleted[count].country_name)) {
+            count += 1;
+        } else {
+            countryList.push(QuestCompleted[count].country_name);
+            count += 1;
+        }
+    }
+    return countryList.length;
 }
